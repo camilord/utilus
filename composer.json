@@ -1,0 +1,21 @@
+{
+  "name": "camilord/utilus",
+  "version": "1.0.0",
+  "homepage": "https://github.com/camilord/utilus",
+  "description": "Camilo3rd's PHP Util Library",
+  "type": "library",
+  "keywords": ["util", "utils"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Camilo Lozano III",
+      "email": "me@camilord.com",
+      "homepage": "https://www.camilord.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "camilord\\utilus\\": "./src/"
+    }
+  }
+}
