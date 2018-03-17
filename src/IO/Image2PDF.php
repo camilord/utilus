@@ -23,8 +23,8 @@ class Image2PDF
      *
      *    apt-get install -y imagemagick
      *
-     * @param $filename
-     * @param $output
+     * @param $filename string
+     * @param $output string
      * @return string
      * @throws \Exception
      */
@@ -39,9 +39,11 @@ class Image2PDF
         }
 
         ob_start();
-        $last_line = @system(sprintf('convert "%s" "%s"', $filename, $output), $retval);
+        @system(sprintf('convert "%s" "%s"', $filename, $output), $retval);
         ob_end_clean();
-        if (file_exists($output) && filesize($output) > 0) {
+
+        if (file_exists($output) && filesize($output) > 0)
+        {
             return $output;
         }
 
