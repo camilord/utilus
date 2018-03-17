@@ -5,7 +5,7 @@ Camilo3rd's PHP Utils Library
 ```
 {
     "require": {
-        "camilord/nz-companies-register": "1.*"
+        "camilord/utilus": "^1.0"
     }
 }
 ```
