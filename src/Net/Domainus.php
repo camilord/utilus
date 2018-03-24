@@ -40,4 +40,14 @@ class Domainus
         return $merged_path;
     }
 
+    public static function colourifyIP($ip)
+    {
+        $parts = explode(".", $ip);
+        $color = sprintf("%02s", dechex($parts[1])) .
+                 sprintf("%02s", dechex($parts[2])) .
+                 sprintf("%02s", dechex($parts[3]));
+
+        return $color;
+    }
+
 }
