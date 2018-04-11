@@ -18,6 +18,10 @@ namespace camilord\utilus\Net;
  */
 class MobileNumberValidator
 {
+    /**
+     * @param string $peoplemobile
+     * @return array|mixed
+     */
     public static function verify_nz_mobile($peoplemobile) {
 
         $final_ok = "";

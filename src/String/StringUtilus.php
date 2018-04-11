@@ -12,7 +12,10 @@
 
 namespace camilord\utilus\String;
 
-
+/**
+ * Class StringUtilus
+ * @package camilord\utilus\String
+ */
 class StringUtilus
 {
     /**

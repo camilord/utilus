@@ -11,9 +11,9 @@
  */
 
 namespace camilord\utilus\Net;
+
 use camilord\utilus\Data\ArrayUtilus;
 use camilord\utilus\Security\Sanitizer;
-
 
 /**
  * Class EmailUtilus

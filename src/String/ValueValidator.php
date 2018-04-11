@@ -12,9 +12,16 @@
 
 namespace camilord\utilus\String;
 
-
+/**
+ * Class ValueValidator
+ * @package camilord\utilus\String
+ */
 class ValueValidator
 {
+    /**
+     * @param mixed $var
+     * @return bool
+     */
     static function is_value_true($var) {
         if (!is_null($var) && in_array(strtolower($var), array('y','yes','true','1'))) {
             return true;
@@ -23,6 +30,11 @@ class ValueValidator
         }
     }
 
+    /**
+     * @param string $date_value
+     * @param string $date_format
+     * @return bool
+     */
     static function is_date_valid($date_value, $date_format = 'Y-m-d')
     {
         $epoch_time = strtotime($date_value);

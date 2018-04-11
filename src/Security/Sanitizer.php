@@ -18,6 +18,10 @@ namespace camilord\utilus\Security;
  */
 class Sanitizer
 {
+    /**
+     * @param string $value
+     * @return mixed|string
+     */
     public static function real_escape_string($value) {
         $search = array("\\",  "\x00", "\n",  "\r",  "'",  '"', "\x1a");
         $replace = array("\\\\","\\0","\\n", "\\r", "\'", '\"', "\\Z");
@@ -25,50 +29,94 @@ class Sanitizer
         return str_replace($search, $replace, $value);
     }
 
+    /**
+     * @param string $text
+     * @return null|string|string[]
+     */
     public static function login_cleaner($text = '') {
         return preg_replace( '/[^a-zA-Z0-9._]/', '', $text);
     }
 
+    /**
+     * @param string $text
+     * @return null|string|string[]
+     */
     public static function email_cleaner($text = '') {
         return preg_replace( '/[^a-zA-Z0-9._\-@]/', '', $text);
     }
 
+    /**
+     * @param string $text
+     * @param bool $withSpace
+     * @return null|string|string[]
+     */
     public static function slugger($text = '', $withSpace = false) {
         return ($withSpace) ?
             preg_replace( '/[^a-zA-Z0-9._\- ]/', '', $text) :
             preg_replace( '/[^a-zA-Z0-9._\-]/', '', $text);
     }
 
+    /**
+     * @param string $text
+     * @param bool $negativity
+     * @return null|string|string[]
+     */
     public static function numeric_cleaner($text = '', $negativity = false) {
         return ($negativity) ?
             preg_replace( '/[^(\-)0-9.]/', '', $text) :
             preg_replace( '/[^0-9.]/', '', $text);
     }
 
+    /**
+     * @param string $text
+     * @param bool $withSpace
+     * @return null|string|string[]
+     */
     public static function alpha_cleaner($text = '', $withSpace = false) {
         return ($withSpace) ?
             preg_replace('/[^a-zA-Z ]/', '', $text) :
             preg_replace('/[^a-zA-Z]/', '', $text);
     }
 
+    /**
+     * @param string $text
+     * @param bool $withSpace
+     * @return null|string|string[]
+     */
     public static function text_cleaner($text = '', $withSpace = true) {
         return ($withSpace) ?
             preg_replace( '/[^a-zA-Z0-9._\-: ]/', '', $text) :
             preg_replace( '/[^a-zA-Z0-9._\-:]/', '', $text);
     }
 
+    /**
+     * @param string $txt
+     * @return null|string|string[]
+     */
     public static function whitespaces($txt) {
         return preg_replace('/\s\s+/', ' ', $txt);
     }
 
+    /**
+     * @param string $text
+     * @return null|string|string[]
+     */
     public static function alphanumeric_cleaner($text) {
         return preg_replace( '/[^a-zA-Z0-9]/', '', $text);
     }
 
+    /**
+     * @param string $text
+     * @return null|string|string[]
+     */
     public static function stringFilter($text) {
         return preg_replace('/[^a-zA-Z0-9._\-:()&%$#*@ ]/', '', $text);
     }
 
+    /**
+     * @param float|string $float
+     * @return mixed
+     */
     public static function floatFilter($float) {
         return filter_var($float, FILTER_SANITIZE_NUMBER_FLOAT);
     }

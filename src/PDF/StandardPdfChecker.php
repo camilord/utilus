@@ -10,9 +10,12 @@
  * ----------------------------------------------------
  */
 
-namespace camilord\utilus\IO;
+namespace camilord\utilus\PDF;
 
-
+/**
+ * Class StandardPdfChecker
+ * @package camilord\utilus\PDF
+ */
 class StandardPdfChecker
 {
     private $_pdf_file;
@@ -22,7 +25,11 @@ class StandardPdfChecker
     private $_tmp_file = '';
     private $_root_doc_path;
     private $_pdf_test_file;
+    private $_base_path;
 
+    /**
+     * @return string
+     */
     public function cwd() {
         if (!__DIR__) {
             return dirname(__FILE__);
@@ -31,17 +38,56 @@ class StandardPdfChecker
         }
     }
 
-    public function set_cache_path($path) {
-        $this->_cache_path = $path;
-        $this->_tmp_file = 'tmp_'.sha1(time().rand(100,9999).rand(1000,9999)).'.pdf';
+    /**
+     * @return string
+     */
+    public function getCachePath()
+    {
+        return $this->_cache_path;
     }
 
+    /**
+     * @param string $cache_path
+     * @return $this
+     */
+    public function setCachePath($cache_path)
+    {
+        $this->_cache_path = $cache_path;
+        $this->_tmp_file = 'tmp_'.sha1(time().rand(100,9999).rand(1000,9999)).'.pdf';
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBasePath()
+    {
+        return $this->_base_path;
+    }
+
+    /**
+     * @param mixed $base_path
+     */
+    public function setBasePath($base_path)
+    {
+        $this->_base_path = $base_path;
+    }
+
+    /**
+     * initiate variables...
+     */
     private function prepare() {
 
-        $this->_root_doc_path = SYSTEM_PATH;
-        $this->_cache_path = $this->_root_doc_path.'/cache/';
+        $this->_root_doc_path = $this->getBasePath();
+        if (!is_dir($this->getCachePath())) {
+            $this->_cache_path = $this->_root_doc_path.'/cache/';
+            if (!is_dir($this->_cache_path)) {
+                @mkdir($this->_cache_path, 0777, true);
+            }
+        }
+
         $this->_tmp_file = $this->_cache_path.'pdf_checker_'.sha1(time()).'.pdf';
-        $this->_pdf_test_file = $this->_root_doc_path.'/public/AlphaOneTestPDF.pdf';
+        $this->_pdf_test_file = __DIR__.'/Sample/AlphaOneTestPDF.pdf';
 
         $this->_command = "pdftk {INPUT_FILES} output {OUTPUT_FILE} verbose";
         $input_files = '"'.$this->_pdf_test_file.'" "'.$this->_pdf_file.'"';
@@ -50,6 +96,9 @@ class StandardPdfChecker
         $this->_command = str_replace('{OUTPUT_FILE}', '"'.$this->_tmp_file.'"', $this->_command);
     }
 
+    /**
+     * to test this class and print the result
+     */
     public function test() {
         echo '<pre>';
         if (function_exists('system')) {
@@ -104,10 +153,17 @@ class StandardPdfChecker
         }
     }
 
+    /**
+     * @return mixed|string
+     */
     public function get_result() {
         return $this->_last_line;
     }
 
+    /**
+     * @param string $pdf_file - full path and file
+     * @return mixed|null
+     */
     public function mime_type($pdf_file) {
         if (file_exists($pdf_file)) {
             $this->_pdf_file = $pdf_file;
