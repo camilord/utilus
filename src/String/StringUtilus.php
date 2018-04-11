@@ -35,6 +35,11 @@ class StringUtilus
         }
     }
 
+    /**
+     * @param string $string
+     * @param int $limit
+     * @return string
+     */
     public static function truncate_middle($string, $limit = 50) {
         if ($limit >= 50 && strlen($string) >= $limit) {
             $total = strlen($string);
@@ -44,11 +49,20 @@ class StringUtilus
         return $string;
     }
 
+    /**
+     * @param string $path1
+     * @param string $path2
+     * @return string
+     */
     public static function mergeString($path1, $path2) {
         $merged_path = $path1 . substr($path2, strpos($path2, basename($path1)) + strlen(basename($path1)));
         return $merged_path;
     }
 
+    /**
+     * @param string $notes
+     * @return string
+     */
     public static function truncate_long_words($notes) {
 
         $tmp = explode(" ", $notes);
@@ -63,6 +77,10 @@ class StringUtilus
         return $notes;
     }
 
+    /**
+     * @param string $txt
+     * @return mixed
+     */
     public static function adv_ucwords($txt) {
         $alphabet = 'qwertyuiopasdfghjklzxcvbnm';
         $aArray = array();

@@ -12,7 +12,10 @@
 
 namespace camilord\utilus\Security;
 
-
+/**
+ * Class Sanitizer
+ * @package camilord\utilus\Security
+ */
 class Sanitizer
 {
     public static function real_escape_string($value) {
@@ -64,7 +67,6 @@ class Sanitizer
 
     public static function stringFilter($text) {
         return preg_replace('/[^a-zA-Z0-9._\-:()&%$#*@ ]/', '', $text);
-//        return filter_var($text, FILTER_SANITIZE_STRING);
     }
 
     public static function floatFilter($float) {
