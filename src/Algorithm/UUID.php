@@ -19,6 +19,11 @@ namespace camilord\utilus\Algorithm;
  */
 class UUID
 {
+    /**
+     * @param $namespace
+     * @param $name
+     * @return bool|string
+     */
     public static function v3($namespace, $name)
     {
         if(!self::is_valid($namespace)) return false;
@@ -59,6 +64,9 @@ class UUID
         );
     }
 
+    /**
+     * @return string
+     */
     public static function v4()
     {
         return sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
@@ -83,6 +91,11 @@ class UUID
         );
     }
 
+    /**
+     * @param $namespace
+     * @param $name
+     * @return bool|string
+     */
     public static function v5($namespace, $name)
     {
         if(!self::is_valid($namespace)) return false;
@@ -123,12 +136,19 @@ class UUID
         );
     }
 
+    /**
+     * @param $uuid
+     * @return bool
+     */
     public static function is_valid($uuid)
     {
         return preg_match('/^\{?[0-9a-f]{8}\-?[0-9a-f]{4}\-?[0-9a-f]{4}\-?'.
                 '[0-9a-f]{4}\-?[0-9a-f]{12}\}?$/i', $uuid) === 1;
     }
 
+    /**
+     * @return bool|string
+     */
     public static function getRandomUUID() {
         return self::v5(md5(time()), time() . '.' . rand(1,99999) . '.' . rand(10,99999) . '.' . rand(100,99999));
     }
