@@ -57,6 +57,9 @@ class FileUpload
         $this->createTempDir();
     }
 
+    /**
+     * create tmp file
+     */
     private function createTempDir()
     {
         if ($this->auto_create_tmp_folder === true && !is_dir($this->tmp_dir_location))

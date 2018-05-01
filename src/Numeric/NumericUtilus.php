@@ -12,7 +12,10 @@
 
 namespace camilord\utilus\Numeric;
 
-
+/**
+ * Class NumericUtilus
+ * @package camilord\utilus\Numeric
+ */
 class NumericUtilus
 {
 

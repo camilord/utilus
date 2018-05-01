@@ -12,9 +12,23 @@
 
 namespace camilord\utilus\Data;
 
-
+/**
+ * Class PaginationUtil
+ * @package camilord\utilus\Data
+ */
 class PaginationUtil
 {
+    /**
+     * @param $page_url
+     * @param $total_rows
+     * @param $rows_per_page
+     * @param $current_page
+     * @param string $args
+     * @param string $label
+     * @param int $page_range
+     * @param bool $force_show
+     * @return string
+     */
     public static function generatePagination($page_url, $total_rows, $rows_per_page, $current_page, $args = '', $label = 'Pages: ', $page_range = 10, $force_show = false)
     {
         $number_pages = $total_rows / $rows_per_page;
@@ -75,6 +89,15 @@ class PaginationUtil
         }
     }
 
+    /**
+     * @param $page_url
+     * @param $total_rows
+     * @param $rows_per_page
+     * @param $current_page
+     * @param string $args
+     * @param string $label
+     * @return string
+     */
     public static function generatePaginationBy5($page_url, $total_rows, $rows_per_page, $current_page, $args = '', $label = 'Pages: ')
     {
         $number_pages = $total_rows / $rows_per_page;
@@ -132,7 +155,13 @@ class PaginationUtil
     }
 
     /**
-     * @todo improve and clean this function
+     * @param $page_url
+     * @param $total_rows
+     * @param $rows_per_page
+     * @param $current_page
+     * @param string $args
+     * @param string $label
+     * @return string
      */
     public static function generatePagination_Orig($page_url, $total_rows, $rows_per_page, $current_page, $args = '', $label = '')
     {

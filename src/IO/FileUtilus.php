@@ -12,7 +12,10 @@
 
 namespace camilord\utilus\IO;
 
-
+/**
+ * Class FileUtilus
+ * @package camilord\utilus\IO
+ */
 class FileUtilus
 {
     /**

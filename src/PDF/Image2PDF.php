@@ -10,11 +10,11 @@
  * ----------------------------------------------------
  */
 
-namespace camilord\utilus\IO;
+namespace camilord\utilus\PDF;
 
 /**
  * Class Image2PDF
- * @package camilord\utilus\IO
+ * @package camilord\utilus\PDF
  */
 class Image2PDF
 {

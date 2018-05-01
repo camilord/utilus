@@ -46,6 +46,10 @@ class ArrayUtilus
         return $data;
     }
 
+    /**
+     * @param $array_data
+     * @return array|mixed|string
+     */
     public static function cleanse($array_data) {
         if (is_array($array_data)) {
             foreach ($array_data as $i => $array_item) {

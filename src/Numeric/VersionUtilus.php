@@ -15,8 +15,16 @@ namespace camilord\utilus\Numeric;
 
 use camilord\utilus\Data\ArrayUtilus;
 
+/**
+ * Class VersionUtilus
+ * @package camilord\utilus\Numeric
+ */
 class VersionUtilus
 {
+    /**
+     * @param string $version
+     * @return string
+     */
     public static function increment($version) {
         $tmp = explode('.', $version);
         if (ArrayUtilus::haveData($tmp))
