@@ -70,7 +70,7 @@ class FileUpload
 
     /**
      * @param $file_element -> $_FILES variable
-     * @return bool|\stdClass
+     * @return bool|FileElement
      */
     public function processUpload($file_element)
     {
@@ -84,15 +84,14 @@ class FileUpload
 
             if (file_exists($new_filename))
             {
-
-                $fileObj = new \stdClass();
-                $fileObj->name = basename($new_filename);
-                $fileObj->original_name = basename($this->files[$file_element]['name']);
-                $fileObj->path = dirname($new_filename);
-                $fileObj->ext = strtolower($file_ext);
-                $fileObj->file_path = $new_filename;
-                $fileObj->size = filesize($new_filename);
-                $fileObj->type = $this->files[$file_element]['type'];
+                $fileObj = new FileElement();
+                $fileObj->setName(basename($new_filename));
+                $fileObj->setOriginalName(basename($this->files[$file_element]['name']));
+                $fileObj->setPath(dirname($new_filename));
+                $fileObj->setExt(strtolower($file_ext));
+                $fileObj->setFilePath($new_filename);
+                $fileObj->setSize(filesize($new_filename));
+                $fileObj->setType($this->files[$file_element]['type']);
 
                 return $fileObj;
 
