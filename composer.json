@@ -2,7 +2,7 @@
   "name": "camilord/utilus",
   "version": "1.0.3",
   "homepage": "https://github.com/camilord/utilus",
-  "description": "Camilo3rd's PHP Util Library",
+  "description": "Camilo3rd's PHP Utils Library",
   "type": "library",
   "keywords": ["util", "utils"],
   "license": "MIT",
