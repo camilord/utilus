@@ -163,7 +163,7 @@ class PaginationUtil
      * @param string $label
      * @return string
      */
-    public static function generatePagination_Orig($page_url, $total_rows, $rows_per_page, $current_page, $args = '', $label = '')
+    public static function generatePaginationClassic($page_url, $total_rows, $rows_per_page, $current_page, $args = '', $label = '')
     {
         $number_pages = $total_rows / $rows_per_page;
         if (floor($number_pages) < $number_pages) {

@@ -98,7 +98,7 @@ class ArrayUtilus
             $string = stripslashes($string);
         }
 
-        $string = strip_tags($string, $allowedTags);
+        $string = strip_tags($string, implode('', $allowedTags));
 
         // ============
         // Remove MS Word Special Characters
