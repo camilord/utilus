@@ -34,7 +34,7 @@ class Domainus
      */
     public static function isSSL() {
         $secure_connection = false;
-        if(isset($_SERVER['HTTPS']) || $_SERVER['SERVER_PORT'] == 443) {
+        if(isset($_SERVER['HTTPS']) || @$_SERVER['SERVER_PORT'] == 443) {
             $secure_connection = true;
         }
 

@@ -3,8 +3,17 @@
         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/6.3/phpunit.xsd"
         bootstrap="./vendor/autoload.php">
     <testsuites>
-        <testsuite>
+        <testsuite name="Project Unit Tests Suite">
             <directory>./tests</directory>
         </testsuite>
     </testsuites>
+    <filter>
+        <whitelist>
+            <directory>./src/</directory>
+        </whitelist>
+    </filter>
+    <logging>
+        <!-- and this is where your report will be written -->
+        <log type="coverage-clover" target="./clover.xml"/>
+    </logging>
 </phpunit>
