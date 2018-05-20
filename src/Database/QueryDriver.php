@@ -69,6 +69,7 @@ class QueryDriver implements QueryDriverInterface
             $sql = $this->getDb()->prepare($query_statement);
             $success = $sql->execute($params);
             $data = $sql->fetchAll();
+            $row_count = $sql->rowCount();
         } catch (\Exception $e) {
             $error_message = $e->getMessage();
         }
@@ -102,7 +103,7 @@ class QueryDriver implements QueryDriverInterface
             $sql = $this->getDb()->prepare($query_statement);
             $success = $sql->execute($params);
             $data = $sql->fetch();
-            $row_count = $sql->rowCount();
+            $row_count = 1;
         } catch (\Exception $e) {
             $error_message = $e->getMessage();
         }
@@ -155,7 +156,39 @@ class QueryDriver implements QueryDriverInterface
     public function update($query_statement, $params = [])
     {
         if (strtoupper(substr($query_statement, 0, 6)) != 'UPDATE') {
-            throw new \Exception('Error! The SQL statement must be INSERT INTO ...');
+            throw new \Exception('Error! The SQL statement must be UPDATE ...');
+        }
+
+        $data = null;
+        $row_count = 0;
+        $affected_rows = 0;
+        $last_insert_id = 0;
+        $success = false;
+        $error_message = null;
+
+        try {
+            $affected_rows = $this->getDb()->executeUpdate($query_statement, $params);
+            $success = true;
+        } catch (\Exception $e) {
+            $error_message = $e->getMessage();
+        }
+        $this->getDb()->close();
+
+        return new QueryResult(
+            $data, $success, $row_count, $affected_rows, $last_insert_id, $error_message
+        );
+    }
+
+    /**
+     * @param $query_statement
+     * @param array $params
+     * @return QueryResult
+     * @throws \Exception
+     */
+    public function delete($query_statement, $params = [])
+    {
+        if (strtoupper(substr($query_statement, 0, 6)) != 'DELETE') {
+            throw new \Exception('Error! The SQL statement must be DELETE ...');
         }
 
         $data = null;

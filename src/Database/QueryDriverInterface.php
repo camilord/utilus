@@ -30,33 +30,33 @@ interface QueryDriverInterface
      * @param $db Connection
      * @return mixed|$this
      */
-    public function setDB($db);
+    public function setDB(Connection $db);
 
     /**
      * @param $sql_statement
      * @param $params array
      * @return mixed
      */
-    public function fetchAll($sql_statement, array $params);
+    public function fetchAll($sql_statement, $params = []);
 
     /**
      * @param $sql_statement
      * @param array $params
      * @return mixed
      */
-    public function fetchRow($sql_statement, array $params);
+    public function fetchRow($sql_statement, $params = []);
 
     /**
      * @param $sql_statement
      * @param array $params
      * @return mixed
      */
-    public function insert($sql_statement, array $params);
+    public function insert($sql_statement, $params = []);
 
     /**
      * @param $sql_statement
      * @param array $params
      * @return mixed
      */
-    public function update($sql_statement, array $params);
+    public function update($sql_statement, $params = []);
 }
