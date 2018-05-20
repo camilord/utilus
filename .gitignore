@@ -1,6 +1,6 @@
 /.idea
-/.travis.yml
 /vendor
 /composer.lock
 /composer.phar
 /phpunit.phar
+/codedev.sh

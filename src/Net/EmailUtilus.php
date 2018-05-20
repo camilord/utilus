@@ -52,23 +52,23 @@ class EmailUtilus
         return preg_replace('/(<[^>]+) style=".*?"/i', '$1', $txt);
     }
 
-    public function email_body_cleaner($str) {
+    public static function email_body_cleaner($str) {
         $str = preg_replace('/(?:(?:\r\n|\r|\n)\s*){3}/s', "\n\n", $str);
         $str = preg_replace("/[ \t]+/", " ", $str);
         $str = preg_replace("/[ ]+/", " ", $str);
         return $str;
     }
 
-    public function extract_emails_from($string) {
+    public static function extract_emails_from($string) {
         preg_match_all("/[\\._a-zA-Z0-9-]+@[\\._a-zA-Z0-9-]+/i", $string, $matches);
         return $matches[0];
     }
 
-    public function is_bounced_email($header) {
+    public static function is_bounced_email($header) {
         return (preg_match("/(mailer\\-daemon|daemon)/", strtolower($header))) ? TRUE : FALSE;
     }
 
-    public function is_auto_reply($headers)
+    public static function is_auto_reply($headers)
     {
         $header_array = [];
         $data = explode("\r\n", $headers);

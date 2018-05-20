@@ -27,6 +27,18 @@ class DomainusTest extends TestCase
         }
     }
 
+    public function testGetBaseURL2()
+    {
+        $is_ssl = isset($_SERVER['HTTPS']);
+        $base_domain = Domainus::getBaseURL();
+
+        if ($is_ssl) {
+            $this->assertEquals($base_domain, 'https://');
+        } else {
+            $this->assertEquals($base_domain, 'http://');
+        }
+    }
+
     public function testIsSSL()
     {
         $is_ssl = isset($_SERVER['HTTPS']);

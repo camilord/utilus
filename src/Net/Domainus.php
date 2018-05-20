@@ -24,7 +24,7 @@ class Domainus
      */
     public static function getBaseURL($server_name = null) {
         if (is_null($server_name) || $server_name == '') {
-            $server_name = $_SERVER['SERVER_NAME'];
+            $server_name = @$_SERVER['SERVER_NAME'];
         }
         return 'http'.((isset($_SERVER['HTTPS'])) ? 's' : '').'://'.$server_name;
     }
