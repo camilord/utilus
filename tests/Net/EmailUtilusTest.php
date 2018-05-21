@@ -43,11 +43,11 @@ class EmailUtilusTest extends TestCase
 
         $this->assertEquals(count($result), 10);
         $this->assertTrue(is_array($result));
-        $this->assertTrue(in_array('Demi.Arbuckle@whakatane.govt.nz', $result));
-        $this->assertTrue(in_array('camilord@abcs.co.nz', $result));
-        $this->assertTrue(in_array('support@abcs.co.nz', $result));
-        $this->assertTrue(in_array('Sheri-Anne.Meadows@whakatane.govt.nz', $result));
-        $this->assertTrue(in_array('d6280104a98745ff9fbf8930572588c8@WDCEXCHANGE2013.wdc.int', $result));
+        $this->assertTrue(in_array('Dexoxole@xoxo.govt.nz', $result));
+        $this->assertTrue(in_array('caxoxord@xoxo.co.nz', $result));
+        $this->assertTrue(in_array('support@xoxo.co.nz', $result));
+        $this->assertTrue(in_array('Shxoxows@xoxo.govt.nz', $result));
+        $this->assertTrue(in_array('d6280104a98745ff9fbf8930572588c8@WDCEXCHANGE2013.xoxo.int', $result));
     }
 
     public function testIsBouncedEmail()
@@ -135,35 +135,35 @@ class EmailUtilusTest extends TestCase
 
     public function getHeaderData() {
         $headers = <<<EOF
-Return-Path: <Demi.Arbuckle@whakatane.govt.nz>
-Delivered-To: camilord@abcs.co.nz
-Received: from mail.abcs.co.nz (mail.abcs.co.nz [127.0.0.1])
-    by mail.abcs.co.nz (Postfix) with ESMTP id 5770FF9501
-    for <camilord@abcs.co.nz>; Thu, 17 May 2018 11:48:00 +1200 (NZST)
-X-Virus-Scanned: amavisd-new at mail.abcs.co.nz
-Received: from mail.abcs.co.nz ([127.0.0.1])
-    by mail.abcs.co.nz (mail.abcs.co.nz [127.0.0.1]) (amavisd-new, port 10024)
-    with ESMTP id 75nvu9GYb--4 for <camilord@abcs.co.nz>;
+Return-Path: <Dexoxole@xoxo.govt.nz>
+Delivered-To: caxoxord@xoxo.co.nz
+Received: from mail.xoxo.co.nz (mail.xoxo.co.nz [127.0.0.1])
+    by mail.xoxo.co.nz (Postfix) with ESMTP id 5770FF9501
+    for <caxoxord@xoxo.co.nz>; Thu, 17 May 2018 11:48:00 +1200 (NZST)
+X-Virus-Scanned: amavisd-new at mail.xoxo.co.nz
+Received: from mail.xoxo.co.nz ([127.0.0.1])
+    by mail.xoxo.co.nz (mail.abcs.co.nz [127.0.0.1]) (amavisd-new, port 10024)
+    with ESMTP id 75nvu9GYb--4 for <caxoxord@xoxo.co.nz>;
     Thu, 17 May 2018 11:47:58 +1200 (NZST)
-Received: from mail.whakatane.govt.nz (mail.whakatane.govt.nz [103.54.224.5])
-    by mail.abcs.co.nz (Postfix) with ESMTP id 09A88F9486
-    for <support@abcs.co.nz>; Thu, 17 May 2018 11:47:57 +1200 (NZST)
-Received: from WDCEXCHANGE2013.wdc.int (Not Verified[10.160.0.15]) by mail.whakatane.govt.nz with Trustwave SEG (v7,5,8,10121)
+Received: from mail.xoxo.govt.nz (mail.xoxo.govt.nz [103.0.0.0])
+    by mail.xoxo.co.nz (Postfix) with ESMTP id 09A88F9486
+    for <support@xoxo.co.nz>; Thu, 17 May 2018 11:47:57 +1200 (NZST)
+Received: from WDCEXCHANGE2013.xoxo.int (Not Verified[10.x.0.x]) by mail.xoxo.govt.nz with Trustwave SEG (v7,5,8,10121)
     id <B5afcc2f20000>; Thu, 17 May 2018 11:46:58 +1200
-Received: from WDCEXCHANGE2013.wdc.int (10.160.0.15) by
-    WDCEXCHANGE2013.wdc.int (10.160.0.15) with Microsoft SMTP Server (TLS) id
+Received: from WDCEXCHANGE2013.xoxo.int (10.160.0.15) by
+    WDCEXCHANGE2013.xoxo.int (10.x.0.x) with Microsoft SMTP Server (TLS) id
     15.0.1293.2; Thu, 17 May 2018 11:46:58 +1200
-Received: from WDCEXCHANGE2013.wdc.int ([fe80::6539:4948:cf64:31fe]) by
-    WDCEXCHANGE2013.wdc.int ([fe80::6539:4948:cf64:31fe%13]) with mapi id
+Received: from WDCEXCHANGE2013.xoxo.int ([xx::6539:xx:cf64:31fe]) by
+    WDCEXCHANGE2013.xoxo.int ([xx::6539:xx:cf64:31fe%13]) with mapi id
     15.00.1293.006; Thu, 17 May 2018 11:46:58 +1200
-From: Demi Arbuckle <Demi.Arbuckle@whakatane.govt.nz>
-To: "support@abcs.co.nz" <support@abcs.co.nz>
-CC: Sheri-Anne Meadows <Sheri-Anne.Meadows@whakatane.govt.nz>
+From: Demi Axoxole <Dexoxole@xoxo.govt.nz>
+To: "support@xoxo.co.nz" <support@xoxo.co.nz>
+CC: Sheri Mexoxows <Shxoxows@xoxo.govt.nz>
 Subject: BC180200 Payment Status
 Thread-Topic: BC180200 Payment Status
 Thread-Index: AdPtcC1MSE5c0pkYThyTQ9zM6/ir+w==
 Date: Wed, 16 May 2018 23:46:58 +0000
-Message-ID: <d6280104a98745ff9fbf8930572588c8@WDCEXCHANGE2013.wdc.int>
+Message-ID: <d6280104a98745ff9fbf8930572588c8@WDCEXCHANGE2013.xoxo.int>
 Accept-Language: en-NZ, en-US
 Content-Language: en-US
 X-MS-Has-Attach: yes
@@ -181,43 +181,13 @@ EOF;
     public function getBouncedData() {
         $headers = <<<EOF
 Return-Path: <MAILER-DAEMON>
-Delivered-To: camilord@abcs.co.nz
-Received: from mail.abcs.co.nz (mail.abcs.co.nz [127.0.0.1])
-    by mail.abcs.co.nz (Postfix) with ESMTP id 7BAF8F8C0F
-    for <camilord@abcs.co.nz>; Tue, 13 Feb 2018 14:10:36 +1300 (NZDT)
-X-Virus-Scanned: amavisd-new at mail.abcs.co.nz
-X-Amavis-PenPals: age 0 0:00:59
-Authentication-Results: mail.abcs.co.nz (amavisd-new);
-    dkim=pass (1024-bit key) header.d=nz.smxemail.com
-Received: from mail.abcs.co.nz ([127.0.0.1])
-    by mail.abcs.co.nz (mail.abcs.co.nz [127.0.0.1]) (amavisd-new, port 10024)
-    with ESMTP id 4izvtwYzvbo2 for <camilord@abcs.co.nz>;
-    Tue, 13 Feb 2018 14:10:35 +1300 (NZDT)
-Received: from out1103.nz.smxemail.com (out1103.nz.smxemail.com [203.84.134.34])
-    by mail.abcs.co.nz (Postfix) with ESMTPS id 1B9D9F8C0D
-    for <camilord@abcs.co.nz>; Tue, 13 Feb 2018 14:10:35 +1300 (NZDT)
-DKIM-Signature: v=1; a=rsa-sha256; d=nz.smxemail.com; s=alpha; c=relaxed/relaxed;
-    q=dns/txt; i=@nz.smxemail.com; t=1518484042;
-    h=From:Sender:Reply-To:Subject:Date:Message-ID:To:Cc;
-    bh=v3Sp2siiMeX3Uqxh9t90rw/9in9D8Qz9UxzHQXb8pgw=;
-    b=ZLBH//IkO6ITLRPxlOdZkzW8S+OyDAQhvme0cm4SXT2YK0k3RYnIHWHgnp/QCBcq
-    nQ8mYlRHa1FLtGr2BU03fcrujIe8CitK25bgSWT+g3N8BCqbE7Nc+petSkEbHK9G
-    Jdu/0wlIHi9l0wDLLKsZuIkY6GmrPHOCOJUQLQWT3mo=;
-Received: from Exchange01.tauranga.govt.nz ([122.56.80.65])
-    by omr.nz.smxemail.com with ESMTP (using TLSv1
-    with cipher AES256-SHA (256/256 bits))
-    id 5A823A49-B7181C61@mta1106.omr;
-    Tue, 13 Feb 2018 01:07:21 +0000
-MIME-Version: 1.0
-From: <mailadmin@tauranga.govt.nz>
-To: <camilord@abcs.co.nz>
 Date: Tue, 13 Feb 2018 14:07:19 +1300
 Content-Type: multipart/report; report-type=delivery-status;
     boundary="02ddc4c3-1c25-44d9-a87b-e19011497c34"
 Content-Language: en-US
-Message-ID: <020fd716-e88a-4199-8971-95eeb3759b6e@tauranga.govt.nz>
+Message-ID: <020fd716-e88a-4199-8971-95eeb3759b6e@xxxx.govt.nz>
 In-Reply-To: <031d01d3a466\$dcb58760$96209620$@abcs.co.nz>
-References: <9FC9429C1B04384787496D1BC2970C4C97581B4F@Exchange01.tauranga.govt.nz>
+References: <9FC9429C1B04384787496D1BC2970C4C97581B4F@Exchange01.xxxx.govt.nz>
     <031d01d3a466\$dcb58760$96209620$@abcs.co.nz>
 Thread-Index: AQHXl+LPt2gZg1ctnJZSwldsza9BF6OZneDAgAAAWBE=
 Subject: Undeliverable: RE: wireshark
@@ -227,40 +197,17 @@ EOF;
 
     public function getTestDataForAutoReplyHeadersSuppress() {
         $headers = <<<EOF
-Return-Path: <buildingadmin_designdocument@selwyn.govt.nz>
-Delivered-To: camilord@abcs.co.nz
-Received: from mail.abcs.co.nz (mail.abcs.co.nz [127.0.0.1])
-    by mail.abcs.co.nz (Postfix) with ESMTP id 40315F92E2
-    for <camilord@abcs.co.nz>; Mon, 6 Nov 2017 11:33:17 +1300 (NZDT)
-X-Virus-Scanned: amavisd-new at mail.abcs.co.nz
-Received: from mail.abcs.co.nz ([127.0.0.1])
-    by mail.abcs.co.nz (mail.abcs.co.nz [127.0.0.1]) (amavisd-new, port 10024)
-    with ESMTP id d_Vb3VD8dwAa for <camilord@abcs.co.nz>;
-    Mon, 6 Nov 2017 11:33:16 +1300 (NZDT)
-Received: from mail.selwyn.govt.nz (unknown [122.56.2.153])
-    by mail.abcs.co.nz (Postfix) with SMTP id 90FA2F92DD
-    for <support@abcs.co.nz>; Mon, 6 Nov 2017 11:33:15 +1300 (NZDT)
-Received: from mail.selwyn.govt.nz (Not Verified[10.50.0.103]) by mail.selwyn.govt.nz with MailMarshal (v7,2,3,6978)
-    id <B59ff91800000>; Mon, 06 Nov 2017 11:32:32 +1300
-Received: from SDCEX2013.sdc.selwyn.local (10.50.0.9) by
-    SDCEX2013.sdc.selwyn.local (10.50.0.9) with Microsoft SMTP Server (TLS) id
-    15.0.1320.4; Mon, 6 Nov 2017 11:32:32 +1300
-Received: from SDCEX2013.sdc.selwyn.local ([::1]) by
-    SDCEX2013.sdc.selwyn.local ([fe80::e48d:2473:b931:e3a%12]) with Microsoft
-    SMTP Server id 15.00.1320.000; Mon, 6 Nov 2017 11:32:32 +1300
-From: BCA <buildingadmin_designdocument@selwyn.govt.nz>
-To: AlphaOne Support <support@abcs.co.nz>
 Subject: Selwyn Autoreply
 Thread-Topic: Selwyn Autoreply
 Thread-Index: AQHTVoX48qQf/rL9R02Db7+QqglAPw==
 Date: Sun, 5 Nov 2017 22:32:32 +0000
-Message-ID: <b5d66930e76243eb8bddd885ad3fafdd@SDCEX2013.sdc.selwyn.local>
+Message-ID: <b5d66930e76243eb8bddd885ad3fafdd@SDCEX2013.xxx.xxx.local>
 X-MS-Has-Attach:
 X-Auto-Response-Suppress: All
-X-MS-Exchange-Inbox-Rules-Loop: buildingadmin_designdocument@selwyn.govt.nz
+X-MS-Exchange-Inbox-Rules-Loop: buildxxxment@xxx.govt.nz
 X-MS-TNEF-Correlator:
 x-ms-exchange-transport-fromentityheader: Hosted
-x-ms-exchange-parent-message-id: <7895a7aa177b6668da30d8332fd365b6@abcs.co.nz>
+x-ms-exchange-parent-message-id: <7895a7aa177b6668da30d8332fd365b6@xxx.co.nz>
 auto-submitted: auto-generated
 x-ms-exchange-generated-message-source: Mailbox Rules Agent
 Content-Type: text/plain; charset="us-ascii"
@@ -272,40 +219,17 @@ EOF;
 
     public function getTestDataForAutoReplyHeadersXReply() {
         $headers = <<<EOF
-Return-Path: <buildingadmin_designdocument@selwyn.govt.nz>
-Delivered-To: camilord@abcs.co.nz
-Received: from mail.abcs.co.nz (mail.abcs.co.nz [127.0.0.1])
-    by mail.abcs.co.nz (Postfix) with ESMTP id 40315F92E2
-    for <camilord@abcs.co.nz>; Mon, 6 Nov 2017 11:33:17 +1300 (NZDT)
-X-Virus-Scanned: amavisd-new at mail.abcs.co.nz
-Received: from mail.abcs.co.nz ([127.0.0.1])
-    by mail.abcs.co.nz (mail.abcs.co.nz [127.0.0.1]) (amavisd-new, port 10024)
-    with ESMTP id d_Vb3VD8dwAa for <camilord@abcs.co.nz>;
-    Mon, 6 Nov 2017 11:33:16 +1300 (NZDT)
-Received: from mail.selwyn.govt.nz (unknown [122.56.2.153])
-    by mail.abcs.co.nz (Postfix) with SMTP id 90FA2F92DD
-    for <support@abcs.co.nz>; Mon, 6 Nov 2017 11:33:15 +1300 (NZDT)
-Received: from mail.selwyn.govt.nz (Not Verified[10.50.0.103]) by mail.selwyn.govt.nz with MailMarshal (v7,2,3,6978)
-    id <B59ff91800000>; Mon, 06 Nov 2017 11:32:32 +1300
-Received: from SDCEX2013.sdc.selwyn.local (10.50.0.9) by
-    SDCEX2013.sdc.selwyn.local (10.50.0.9) with Microsoft SMTP Server (TLS) id
-    15.0.1320.4; Mon, 6 Nov 2017 11:32:32 +1300
-Received: from SDCEX2013.sdc.selwyn.local ([::1]) by
-    SDCEX2013.sdc.selwyn.local ([fe80::e48d:2473:b931:e3a%12]) with Microsoft
-    SMTP Server id 15.00.1320.000; Mon, 6 Nov 2017 11:32:32 +1300
-From: BCA <buildingadmin_designdocument@selwyn.govt.nz>
-To: AlphaOne Support <support@abcs.co.nz>
 Subject: Selwyn Autoreply
 Thread-Topic: Selwyn Autoreply
 Thread-Index: AQHTVoX48qQf/rL9R02Db7+QqglAPw==
 Date: Sun, 5 Nov 2017 22:32:32 +0000
-Message-ID: <b5d66930e76243eb8bddd885ad3fafdd@SDCEX2013.sdc.selwyn.local>
+Message-ID: <b5d66930e76243eb8bddd885ad3fafdd@SDCEX2013.sdc.xxx.local>
 X-MS-Has-Attach:
 x-autoreply: yes
-X-MS-Exchange-Inbox-Rules-Loop: buildingadmin_designdocument@selwyn.govt.nz
+X-MS-Exchange-Inbox-Rules-Loop: buixxxument@xxx.govt.nz
 X-MS-TNEF-Correlator:
 x-ms-exchange-transport-fromentityheader: Hosted
-x-ms-exchange-parent-message-id: <7895a7aa177b6668da30d8332fd365b6@abcs.co.nz>
+x-ms-exchange-parent-message-id: <7895a7aa177b6668da30d8332fd365b6@xxx.co.nz>
 auto-submitted: auto-generated
 x-ms-exchange-generated-message-source: Mailbox Rules Agent
 Content-Type: text/plain; charset="us-ascii"
