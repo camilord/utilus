@@ -12,6 +12,8 @@
 
 namespace camilord\utilus\PDF;
 
+use camilord\utilus\IO\FileUtilus;
+
 /**
  * Class Image2PDF
  * @package camilord\utilus\PDF

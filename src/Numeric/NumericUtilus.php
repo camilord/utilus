@@ -20,12 +20,14 @@ class NumericUtilus
 {
 
     /**
-     * @param $val
+     * @param mixed $val
+     * @param int $lead_count
      * @return string
      */
-    public static function leading_zeroes($val)
+    public static function leading_zeroes($val, $lead_count = 6)
     {
-        return sprintf('%06d', $val);
+        $format = '%0'.$lead_count.'d';
+        return sprintf($format, $val);
     }
 
     /**
@@ -41,6 +43,21 @@ class NumericUtilus
         //remove decimal point if an integer ie. 140. becomes 140
         $num = rtrim($num, '.');
 
+        /**
+         * if too many decimals, remove it...
+         */
+        if (preg_match("/\\./", $num)) {
+            $tmp = explode('.', $num);
+            $num = $tmp[0].'.'.(int)@$tmp[1];
+        }
+
+        /**
+         * if leading zero, then remove the zeroes...
+         */
+        while (substr($num, 0, 1) == '0') {
+            $num = substr($num, 1, strlen($num));
+        }
+
         return $num;
     }
 
@@ -49,7 +66,7 @@ class NumericUtilus
      *
      * @return string
      */
-    public function getCleanNumberCurrency($val)
+    public static function getCleanNumberCurrency($val)
     {
         $num = self::getCleanNumber($val);
 

@@ -8,6 +8,9 @@
  * Date: 17/03/2018
  * Time: 5:44 PM
  * ----------------------------------------------------
+ *
+ * Disclaimer: this is not mine but taken somewhere else which I cannot remember where I got it back in 2013.
+ *             Been using this because its been useful to most of my project if dealing with NZ websites.
  */
 
 namespace camilord\utilus\Net;
@@ -25,6 +28,7 @@ class MobileNumberValidator
     public static function verify_nz_mobile($peoplemobile) {
 
         $final_ok = "";
+        $mobile['mobile_no'] = $peoplemobile;
         $mobile['verification'] = "FAILED";
 
         //strip spaces and special characters

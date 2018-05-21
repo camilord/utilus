@@ -27,24 +27,20 @@ class VersionUtilus
      */
     public static function increment($version) {
         $tmp = explode('.', $version);
-        if (ArrayUtilus::haveData($tmp))
-        {
-            $minor_revision = (int)@$tmp[2];
-            $major_revision = (int)@$tmp[1];
-            $version = (int)$tmp[0];
 
-            $minor_revision++;
-            if ($minor_revision >= 999) {
-                $minor_revision = 0;
-                $major_revision++;
-            }
-            if ($major_revision >= 99) {
-                $major_revision = 0;
-                $version++;
-            }
-            return $version.'.'.$major_revision.'.'.$minor_revision;
-        } else {
-            return '1.5.'.date('Ymd');
+        $minor_revision = (int)@$tmp[2];
+        $major_revision = (int)@$tmp[1];
+        $version = (int)$tmp[0];
+
+        $minor_revision++;
+        if ($minor_revision > 999) {
+            $minor_revision = 0;
+            $major_revision++;
         }
+        if ($major_revision > 99) {
+            $major_revision = 0;
+            $version++;
+        }
+        return $version.'.'.$major_revision.'.'.$minor_revision;
     }
 }

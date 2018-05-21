@@ -12,7 +12,6 @@
 
 namespace camilord\utilus\PDF;
 
-
 /**
  * apt-get install libreoffice-core --no-install-recommends
  * apt-get install cups-pdf
@@ -116,6 +115,7 @@ class PdfConverterFromDocx
             $cmd = str_replace('{DOCX_FILE}', $filename, $cmd);
             $output_file = str_replace([ '.doc', '.docx' ], '.pdf', $filename);
         }
+        $output_file = str_replace(['.pdfx', '.pdfX', '.PDFX'], '.pdf', $output_file);
 
         if ($debug) {
             print_r([
