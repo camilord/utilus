@@ -27,6 +27,7 @@ I don't have to recreate these classes and functions,
 all I need to do is add this package and start my work.
 Few example below:
 
+GENERATING UUID
 ```$php
 // I need UUID
 $uuid = UUID::v4();
@@ -36,6 +37,7 @@ OUTPUT:
  
 ``b9ef0e9e-3249-31a1-a529-640a129890ac``
 
+UPLOADING FILE
 ```$php
 // I need to process upload file
 $tmp_dir = '/tmp/junkies/';
@@ -48,6 +50,7 @@ OUTPUT:
 
 ``/tmp/junkies/tmp_073240_03927845092742.jpg``
 
+LEADING ZEROES
 ```$php
 // I need to use leading zeroes so the display is awesome
 $val = '1208';
