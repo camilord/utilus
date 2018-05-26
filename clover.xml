@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1526907811">
-  <project timestamp="1526907811">
+<coverage generated="1527342156">
+  <project timestamp="1527342156">
     <package name="camilord\utilus\Algorithm">
       <file name="E:\localhost\github\utilus\src/Algorithm/UUID.php">
         <class name="UUID" namespace="camilord\utilus\Algorithm" fullPackage="camilord" package="camilord">
@@ -940,7 +940,7 @@
       </file>
       <file name="E:\localhost\github\utilus\src/PDF/PdfConverterFromDocx.php">
         <class name="PdfConverterFromDocx" namespace="camilord\utilus\PDF" fullPackage="AlphaOne" package="AlphaOne">
-          <metrics complexity="17" methods="10" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="44" coveredstatements="26" elements="54" coveredelements="32"/>
+          <metrics complexity="17" methods="10" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="52" coveredstatements="42" elements="62" coveredelements="50"/>
         </class>
         <line num="37" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="39" type="stmt" count="1"/>
@@ -963,40 +963,48 @@
         <line num="88" type="method" name="useDoc2Pdf" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="89" type="stmt" count="1"/>
         <line num="90" type="stmt" count="1"/>
-        <line num="98" type="method" name="convert" visibility="public" complexity="7" crap="15.61" count="1"/>
+        <line num="98" type="method" name="convert" visibility="public" complexity="7" crap="7.84" count="1"/>
         <line num="100" type="stmt" count="1"/>
         <line num="101" type="stmt" count="1"/>
         <line num="104" type="stmt" count="1"/>
         <line num="106" type="stmt" count="1"/>
-        <line num="107" type="stmt" count="0"/>
-        <line num="108" type="stmt" count="0"/>
+        <line num="107" type="stmt" count="1"/>
+        <line num="108" type="stmt" count="1"/>
         <line num="109" type="stmt" count="1"/>
-        <line num="110" type="stmt" count="0"/>
-        <line num="111" type="stmt" count="0"/>
-        <line num="112" type="stmt" count="0"/>
-        <line num="113" type="stmt" count="0"/>
+        <line num="110" type="stmt" count="1"/>
+        <line num="111" type="stmt" count="1"/>
+        <line num="112" type="stmt" count="1"/>
+        <line num="113" type="stmt" count="1"/>
         <line num="114" type="stmt" count="1"/>
         <line num="115" type="stmt" count="1"/>
         <line num="116" type="stmt" count="1"/>
-        <line num="120" type="stmt" count="0"/>
+        <line num="118" type="stmt" count="1"/>
+        <line num="120" type="stmt" count="1"/>
         <line num="121" type="stmt" count="0"/>
         <line num="122" type="stmt" count="0"/>
-        <line num="124" type="stmt" count="0"/>
+        <line num="123" type="stmt" count="0"/>
         <line num="125" type="stmt" count="0"/>
+        <line num="126" type="stmt" count="0"/>
         <line num="128" type="stmt" count="1"/>
         <line num="129" type="stmt" count="1"/>
         <line num="130" type="stmt" count="1"/>
-        <line num="133" type="stmt" count="0"/>
+        <line num="131" type="stmt" count="1"/>
+        <line num="133" type="stmt" count="1"/>
         <line num="134" type="stmt" count="0"/>
-        <line num="137" type="stmt" count="0"/>
-        <line num="150" type="method" name="getLibreOfficeCommandSyntax" visibility="private" complexity="1" crap="2" count="0"/>
-        <line num="151" type="stmt" count="0"/>
-        <line num="161" type="method" name="getCupsPdfCommandSyntax" visibility="private" complexity="1" crap="2" count="0"/>
-        <line num="162" type="stmt" count="0"/>
+        <line num="135" type="stmt" count="0"/>
+        <line num="137" type="stmt" count="1"/>
+        <line num="138" type="stmt" count="0"/>
+        <line num="141" type="stmt" count="1"/>
+        <line num="150" type="method" name="getLibreOfficeCommandSyntax" visibility="private" complexity="1" crap="1" count="1"/>
+        <line num="151" type="stmt" count="1"/>
+        <line num="152" type="stmt" count="1"/>
+        <line num="161" type="method" name="getCupsPdfCommandSyntax" visibility="private" complexity="1" crap="1" count="1"/>
+        <line num="162" type="stmt" count="1"/>
+        <line num="163" type="stmt" count="1"/>
         <line num="172" type="method" name="getDoc2PdfCommandSyntax" visibility="private" complexity="1" crap="1" count="1"/>
         <line num="173" type="stmt" count="1"/>
-        <line num="175" type="stmt" count="1"/>
-        <metrics loc="175" ncloc="106" classes="1" methods="10" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="44" coveredstatements="26" elements="54" coveredelements="32"/>
+        <line num="174" type="stmt" count="1"/>
+        <metrics loc="175" ncloc="106" classes="1" methods="10" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="52" coveredstatements="42" elements="62" coveredelements="50"/>
       </file>
       <file name="E:\localhost\github\utilus\src/PDF/PdfFillable2Flatten.php">
         <class name="PdfFillable2Flatten" namespace="camilord\utilus\PDF" fullPackage="AlphaOne" package="AlphaOne">
@@ -1134,12 +1142,12 @@
     <package name="camilord\utilus\Security">
       <file name="E:\localhost\github\utilus\src/Security/Sanitizer.php">
         <class name="Sanitizer" namespace="camilord\utilus\Security" fullPackage="camilord" package="camilord">
-          <metrics complexity="18" methods="12" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="32" coveredstatements="3" elements="44" coveredelements="5"/>
+          <metrics complexity="18" methods="12" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="32" coveredstatements="6" elements="44" coveredelements="9"/>
         </class>
-        <line num="25" type="method" name="real_escape_string" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="26" type="stmt" count="0"/>
-        <line num="27" type="stmt" count="0"/>
-        <line num="29" type="stmt" count="0"/>
+        <line num="25" type="method" name="real_escape_string" visibility="public" complexity="1" crap="1" count="3"/>
+        <line num="26" type="stmt" count="3"/>
+        <line num="27" type="stmt" count="3"/>
+        <line num="29" type="stmt" count="3"/>
         <line num="36" type="method" name="login_cleaner" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="37" type="stmt" count="0"/>
         <line num="44" type="method" name="email_cleaner" visibility="public" complexity="1" crap="1" count="1"/>
@@ -1180,7 +1188,7 @@
         <line num="142" type="stmt" count="0"/>
         <line num="143" type="stmt" count="0"/>
         <line num="144" type="stmt" count="0"/>
-        <metrics loc="145" ncloc="77" classes="1" methods="12" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="32" coveredstatements="3" elements="44" coveredelements="5"/>
+        <metrics loc="145" ncloc="77" classes="1" methods="12" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="32" coveredstatements="6" elements="44" coveredelements="9"/>
       </file>
     </package>
     <package name="camilord\utilus\String">
@@ -1271,6 +1279,6 @@
         <metrics loc="45" ncloc="22" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="0" elements="15" coveredelements="0"/>
       </file>
     </package>
-    <metrics files="28" loc="2887" ncloc="1758" classes="26" methods="127" coveredmethods="71" conditionals="0" coveredconditionals="0" statements="961" coveredstatements="593" elements="1088" coveredelements="664"/>
+    <metrics files="28" loc="2887" ncloc="1758" classes="26" methods="127" coveredmethods="74" conditionals="0" coveredconditionals="0" statements="969" coveredstatements="612" elements="1096" coveredelements="686"/>
   </project>
 </coverage>
