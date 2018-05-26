@@ -29,7 +29,7 @@ Few example below:
 
 ```$php
 // I need UUID
-$uuid = UUID:v4();
+$uuid = UUID::v4();
 ```
 OUTPUT: b9ef0e9e-3249-31a1-a529-640a129890ac
 ```$php
