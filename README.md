@@ -30,6 +30,7 @@ Few example below:
 ```$php
 // I need UUID
 $uuid = UUID::v4();
+echo $uuid;
 ```
 OUTPUT: b9ef0e9e-3249-31a1-a529-640a129890ac
 ```$php
@@ -45,5 +46,6 @@ OUTPUT: /tmp/junkies/tmp_073240_03927845092742.jpg
 // I need to use leading zeroes so the display is awesome
 $val = '1208';
 $new_val = NumericUtilus::leading_zeroes($val, 6);
+echo $new_val;
 ```
 OUTPUT: 001208
