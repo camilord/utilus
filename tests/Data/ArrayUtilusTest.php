@@ -54,13 +54,17 @@ class ArrayUtilusTest extends TestCase
             '<script>alert(1)</script>hello world',
             'hello world <div>honey</div>',
             'test' => 'hello <div>x</div>',
-            3 => 'hello <div>x</div>'
+            3 => 'hello <div>x</div>',
+            null,
+            new stdClass()
         ];
         $expected = [
             'alert(1)hello world',
             'hello world honey',
             'hello x',
             'hello x',
+            null,
+            new stdClass()
         ];
         $str = ArrayUtilus::cleanse($str);
         $index = 0;

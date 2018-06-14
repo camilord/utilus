@@ -56,7 +56,7 @@ class ArrayUtilus
                 $array_data[$i] = ArrayUtilus::cleanse($array_item);
             }
         } else if (is_object($array_data) || is_null($array_data)) {
-            // do nothing...
+            return $array_data;
         } else {
             $array_data = ArrayUtilus::cleanse_string($array_data);
         }
@@ -94,10 +94,6 @@ class ArrayUtilus
      */
     public static function cleanse_string($string, $allowedTags = array('<br>','<b>','<i>','<p>','<span>','<strong>'))
     {
-        if (get_magic_quotes_gpc()) {
-            $string = stripslashes($string);
-        }
-
         $string = strip_tags($string, implode('', $allowedTags));
 
         // ============
