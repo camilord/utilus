@@ -90,6 +90,15 @@ class Sanitizer
     }
 
     /**
+     * Imported from Zekurity before it was removed
+     * @param string $text
+     * @return null|string|string[]
+     */
+    static public function filename_cleaner($text) {
+        return preg_replace( '/[^a-zA-Z0-9._\-]/', '', $text);
+    }
+
+    /**
      * @param string $txt
      * @return null|string|string[]
      */
@@ -142,5 +151,71 @@ class Sanitizer
             $txt = Sanitizer::whitespaces($txt);
         }
         return $txt;
+    }
+
+    public static function xss_clean($data, $encoding = 'UTF-8') {
+
+        if (is_array($data)) {
+            foreach($data as $key => $val) {
+                $data[$key] = self::xss_clean($val, $encoding);
+            }
+            return $data;
+        }
+
+        // Fix &entity\n;
+        //$data = str_replace(array('&amp;','&lt;','&gt;'), array('&amp;amp;','&amp;lt;','&amp;gt;'), $data);
+        $data = preg_replace('/(&#*\w+)[\x00-\x20]+;/u', '$1;', $data);
+        $data = preg_replace('/(&#x*[0-9A-F]+);*/iu', '$1;', $data);
+        $data = html_entity_decode($data, ENT_COMPAT, 'UTF-8');
+
+        // Remove any attribute starting with "on" or xmlns
+        $data = preg_replace('#(<[^>]+?[\x00-\x20"\'])(?:on|xmlns)[^>]*+>#iu', '$1>', $data);
+
+        // Remove javascript: and vbscript: protocols
+        $data = preg_replace('#([a-z]*)[\x00-\x20]*=[\x00-\x20]*([`\'"]*)[\x00-\x20]*j[\x00-\x20]*a[\x00-\x20]*v[\x00-\x20]*a[\x00-\x20]*s[\x00-\x20]*c[\x00-\x20]*r[\x00-\x20]*i[\x00-\x20]*p[\x00-\x20]*t[\x00-\x20]*:#iu', '$1=$2nojavascript...', $data);
+        $data = preg_replace('#([a-z]*)[\x00-\x20]*=([\'"]*)[\x00-\x20]*v[\x00-\x20]*b[\x00-\x20]*s[\x00-\x20]*c[\x00-\x20]*r[\x00-\x20]*i[\x00-\x20]*p[\x00-\x20]*t[\x00-\x20]*:#iu', '$1=$2novbscript...', $data);
+        $data = preg_replace('#([a-z]*)[\x00-\x20]*=([\'"]*)[\x00-\x20]*-moz-binding[\x00-\x20]*:#u', '$1=$2nomozbinding...', $data);
+
+        // Only works in IE: <span style="width: expression(alert('Ping!'));"></span>
+        $data = preg_replace('#(<[^>]+?)style[\x00-\x20]*=[\x00-\x20]*[`\'"]*.*?expression[\x00-\x20]*\([^>]*+>#i', '$1>', $data);
+        $data = preg_replace('#(<[^>]+?)style[\x00-\x20]*=[\x00-\x20]*[`\'"]*.*?behaviour[\x00-\x20]*\([^>]*+>#i', '$1>', $data);
+        $data = preg_replace('#(<[^>]+?)style[\x00-\x20]*=[\x00-\x20]*[`\'"]*.*?s[\x00-\x20]*c[\x00-\x20]*r[\x00-\x20]*i[\x00-\x20]*p[\x00-\x20]*t[\x00-\x20]*:*[^>]*+>#iu', '$1>', $data);
+
+        // remove style
+        $data = preg_replace('/(<[^>]+) style=".*?"/i', '$1', $data);
+
+        // remove obvious injection
+        $data = preg_replace('/javascript:[a-zA-Z0-9_ ]+\\(/i', '', $data);
+
+        // Remove namespaced elements (we do not need them)
+        $data = preg_replace('#</*\w+:\w[^>]*+>#i', '', $data);
+
+        $data = strip_tags($data, '<b><br><ul><li><ol><span>');
+
+        // more complex patterns
+        $patterns = array(
+            // Match any attribute starting with "on" or xmlns
+            '#(<[^>]+[\x00-\x20\"\'\/])(on|xmlns)[^>]*>?#iUu',
+            // Match javascript:, livescript:, vbscript: and mocha: protocols
+            '!((java|live|vb)script|mocha|feed|data):(\w)*!iUu',
+            '#-moz-binding[\x00-\x20]*:#u',
+            // Match style attributes
+            '#(<[^>]+[\x00-\x20\"\'\/])style=[^>]*>?#iUu',
+            // Match unneeded tags
+            '#</*(?:applet|b(?:ase|gsound|link)|embed|frame(?:set)?|i(?:frame|layer)|l(?:ayer|ink)|meta|object|s(?:cript|tyle)|title|xml)[^>]*+>#i'
+        );
+        foreach($patterns as $regex) {
+            $data = preg_replace($regex, '', $data);
+        }
+
+        /**
+         * https://www.owasp.org/index.php/PHP_Security_Cheat_Sheet#Code_Injection
+         */
+        $data = htmlspecialchars($data,ENT_QUOTES | ENT_HTML401, $encoding);
+
+        // restore it..
+        $data = str_replace('&amp;', '&', $data);
+
+        return $data;
     }
 }

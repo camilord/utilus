@@ -12,11 +12,16 @@
 
 use PHPUnit\Framework\TestCase;
 use camilord\utilus\PDF\PdfConverterFromDocx;
+use camilord\utilus\IO\SystemUtilus;
 
 class PdfConverterFromDocxTest extends TestCase
 {
     public function testConvert()
     {
+        if (SystemUtilus::isWin32()) {
+            $this->markTestSkipped("Unit tests applicable for LINUX environment only...");
+        }
+
         $dir = str_replace('\\', '/', dirname(__FILE__).'/TestData/');
         $docfile = $dir.'Samba_ADDC.docx';
 

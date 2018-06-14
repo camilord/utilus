@@ -18,12 +18,12 @@ class DomainusTest extends TestCase
     public function testGetBaseURL()
     {
         $is_ssl = isset($_SERVER['HTTPS']);
-        $base_domain = Domainus::getBaseURL('localhost');
+        $base_domain = Domainus::getBaseURL('camilord.com');
 
         if ($is_ssl) {
-            $this->assertEquals($base_domain, 'https://localhost');
+            $this->assertEquals($base_domain, 'https://camilord.com');
         } else {
-            $this->assertEquals($base_domain, 'http://localhost');
+            $this->assertEquals($base_domain, 'http://camilord.com');
         }
     }
 
@@ -79,7 +79,7 @@ class DomainusTest extends TestCase
 
     public function getTestData() {
         return [
-            ['http://localhost/test/', '/test/url?t=1234', 'http://localhost/test/url?t=1234'],
+            ['http://camilord.com/test/', '/test/url?t=1234', 'http://camilord.com/test/url?t=1234'],
             ['/srv/data/prod', '/prod/council', '/srv/data/prod/council'],
         ];
     }

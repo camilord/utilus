@@ -12,10 +12,16 @@
 
 use PHPUnit\Framework\TestCase;
 use camilord\utilus\PDF\Image2PDF;
+use camilord\utilus\IO\SystemUtilus;
 
 class Image2PDFTest extends TestCase
 {
-    public function testConvertImage2PDF() {
+    public function testConvertImage2PDF()
+    {
+        if (SystemUtilus::isWin32()) {
+            $this->markTestSkipped("Unit tests applicable for LINUX environment only...");
+        }
+
         $img2pdf = new Image2PDF();
         $dir = str_replace('\\', '/', dirname(__FILE__).'/TestData/');
 
