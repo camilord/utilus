@@ -25,7 +25,7 @@ class ValueValidatorTest extends TestCase
      */
     public function testIsTrue($val, $expected) {
         $result = ValueValidator::is_value_true($val);
-        $this->assertEquals($expected, $result);
+        $this->assertEquals($expected, $result, 'DATA: '.print_r([$val, $expected], true));
     }
 
     /**
@@ -37,7 +37,7 @@ class ValueValidatorTest extends TestCase
             [ 'yes', true ],
             [ 'true', true ],
             [ '1', true ],
-            [ '2', true ],
+            [ '2', false ],
             [ '0', false ],
             [ '', false ],
             [ null, false ],
