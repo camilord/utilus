@@ -54,6 +54,11 @@ class Image2PDFTest extends TestCase
      * @expectedException Exception
      */
     public function testConvertException() {
+
+        if (SystemUtilus::isWin32()) {
+            $this->markTestSkipped("Unit tests applicable for LINUX environment only...");
+        }
+
         $img2pdf = new Image2PDF();
         $dir = str_replace('\\', '/', dirname(__FILE__).'/TestData/');
         /**

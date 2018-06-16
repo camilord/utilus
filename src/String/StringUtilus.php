@@ -92,6 +92,6 @@ class StringUtilus
             $aArray[] = '"'.$alphabet[$i];
             $rArray[] = strtoupper('"'.$alphabet[$i]);
         }
-        return str_replace($aArray, $rArray, $txt);
+        return ucwords(str_replace($aArray, $rArray, $txt));
     }
 }

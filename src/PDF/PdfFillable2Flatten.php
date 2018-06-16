@@ -19,6 +19,16 @@ namespace camilord\utilus\PDF;
  */
 class PdfFillable2Flatten
 {
+    private $tmpDir = 'tmp/';
+
+    /**
+     * @param string $tmpDir
+     */
+    public function setTmpDir($tmpDir)
+    {
+        $this->tmpDir = $tmpDir;
+    }
+
     /**
      * @todo: before you can use this method, you must install PDFTK in your server first.
      * @installation: apt-get install -y pdftk
@@ -26,10 +36,10 @@ class PdfFillable2Flatten
      * @param bool $debug
      * @return string
      */
-    public static function convert($source_file, $debug = false) {
+    public function convert($source_file, $debug = false) {
 
-        $output_file = 'tmp/'.time().'_'.basename($source_file);
-        $final_output_file = 'tmp/'.sha1(time()).'.pdf';
+        $output_file = $this->tmpDir.time().'_'.basename($source_file);
+        $final_output_file = $this->tmpDir.sha1(time()).'.pdf';
 
         $cmd1 = 'pdftk "{SOURCE_FILE}" generate_fdf output {OUTPUT_FILE}';
         $cmd2 = 'pdftk "{SOURCE_FILE}" fill_form {OUTPUT_FILE} output "{FINAL_OUTPUT_FILE}" flatten';
@@ -50,8 +60,8 @@ class PdfFillable2Flatten
         if (file_exists($final_output_file)) {
             @unlink($output_file);
             return $final_output_file;
-        } else {
-            return $source_file;
         }
+
+        return $source_file;
     }
 }
