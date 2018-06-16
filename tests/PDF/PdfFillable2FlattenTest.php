@@ -20,14 +20,16 @@ class PdfFillable2FlattenTest extends TestCase
 {
     public function testConvert() {
 
-        if (SystemUtilus::isWin32()) {
-            $this->markTestSkipped("Unit tests applicable for LINUX environment only...");
-        }
-
         $filename = dirname(__FILE__).'/TestData/application-for-nz-citizenship-adult.pdf';
 
         $pdf = new PdfFillable2Flatten();
         $pdf->setTmpDir('tmp/');
+
+
+        if (SystemUtilus::isWin32()) {
+            $this->markTestSkipped("Unit tests applicable for LINUX environment only...");
+        }
+
         $result = $pdf->convert($filename);
 
         $this->assertFileExists($result);
@@ -35,14 +37,15 @@ class PdfFillable2FlattenTest extends TestCase
 
     public function testConvertDebug() {
 
-        if (SystemUtilus::isWin32()) {
-            $this->markTestSkipped("Unit tests applicable for LINUX environment only...");
-        }
-
         $filename = dirname(__FILE__).'/TestData/application-for-nz-citizenship-adult.pdf';
 
         $pdf = new PdfFillable2Flatten();
         $pdf->setTmpDir('tmp/');
+
+        if (SystemUtilus::isWin32()) {
+            $this->markTestSkipped("Unit tests applicable for LINUX environment only...");
+        }
+
         $result = $pdf->convert($filename, true);
 
         $this->assertFileExists($result);

@@ -18,10 +18,6 @@ class PdfConverterFromDocxTest extends TestCase
 {
     public function testConvert()
     {
-        if (SystemUtilus::isWin32()) {
-            $this->markTestSkipped("Unit tests applicable for LINUX environment only...");
-        }
-
         $dir = str_replace('\\', '/', dirname(__FILE__).'/TestData/');
         $docfile = $dir.'Samba_ADDC.docx';
 
@@ -30,6 +26,10 @@ class PdfConverterFromDocxTest extends TestCase
         $pdfConvert->setSaveFolder($dir);
         $save_folder = $pdfConvert->getSaveFolder();
         $this->assertEquals($save_folder, $dir);
+
+        if (SystemUtilus::isWin32()) {
+            $this->markTestSkipped("Unit tests applicable for LINUX environment only...");
+        }
 
         $this->assertFalse($pdfConvert->convert('wohoho.docx'));
 
