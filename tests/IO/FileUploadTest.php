@@ -10,6 +10,8 @@
  * ----------------------------------------------------
  */
 
+namespace camilord\utilus\IO;
+
 use PHPUnit\Framework\TestCase;
 use camilord\utilus\IO\FileUpload;
 

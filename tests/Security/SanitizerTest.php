@@ -10,6 +10,8 @@
  * ----------------------------------------------------
  */
 
+namespace camilord\utilus\Security;
+
 use PHPUnit\Framework\TestCase;
 use camilord\utilus\Security\Sanitizer;
 use camilord\utilus\IO\SystemUtilus;

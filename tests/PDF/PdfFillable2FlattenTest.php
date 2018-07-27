@@ -10,7 +10,7 @@
  * ----------------------------------------------------
  */
 
-namespace PDF;
+namespace camilord\utilus\PDF;
 
 use camilord\utilus\IO\SystemUtilus;
 use camilord\utilus\PDF\PdfFillable2Flatten;

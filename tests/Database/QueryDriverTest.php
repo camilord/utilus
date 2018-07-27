@@ -10,6 +10,8 @@
  * ----------------------------------------------------
  */
 
+namespace camilord\utilus\Database;
+
 use PHPUnit\Framework\TestCase;
 use camilord\utilus\Database\QueryDriver;
 use Doctrine\DBAL\Driver\Mysqli\Driver;

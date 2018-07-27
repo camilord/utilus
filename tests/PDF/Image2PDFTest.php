@@ -10,6 +10,8 @@
  * ----------------------------------------------------
  */
 
+namespace camilord\utilus\PDF;
+
 use PHPUnit\Framework\TestCase;
 use camilord\utilus\PDF\Image2PDF;
 use camilord\utilus\IO\SystemUtilus;

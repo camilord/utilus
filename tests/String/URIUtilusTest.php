@@ -10,8 +10,7 @@
  * ----------------------------------------------------
  */
 
-namespace String;
-
+namespace camilord\utilus\String;
 
 use camilord\utilus\String\URIUtilus;
 use PHPUnit\Framework\TestCase;

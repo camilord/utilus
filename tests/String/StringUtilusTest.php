@@ -10,7 +10,7 @@
  * ----------------------------------------------------
  */
 
-namespace String;
+namespace camilord\utilus\String;
 
 
 use camilord\utilus\String\StringUtilus;

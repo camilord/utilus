@@ -10,8 +10,9 @@
  * ----------------------------------------------------
  */
 
+namespace camilord\utilus\Data;
+
 use PHPUnit\Framework\TestCase;
-use camilord\utilus\Data\ArrayUtilus;
 
 class ArrayUtilusTest extends TestCase
 {
@@ -56,7 +57,7 @@ class ArrayUtilusTest extends TestCase
             'test' => 'hello <div>x</div>',
             3 => 'hello <div>x</div>',
             null,
-            new stdClass()
+            new \stdClass()
         ];
         $expected = [
             'alert(1)hello world',
@@ -64,7 +65,7 @@ class ArrayUtilusTest extends TestCase
             'hello x',
             'hello x',
             null,
-            new stdClass()
+            new \stdClass()
         ];
         $str = ArrayUtilus::cleanse($str);
         $index = 0;

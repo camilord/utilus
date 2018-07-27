@@ -10,6 +10,8 @@
  * ----------------------------------------------------
  */
 
+namespace camilord\utilus\Encryption;
+
 use PHPUnit\Framework\TestCase;
 use camilord\utilus\Encryption\DataCrypt7x;
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1529197116">
-  <project timestamp="1529197116">
+<coverage generated="1532678457">
+  <project timestamp="1532678457">
     <package name="camilord\utilus\Algorithm">
       <file name="E:\localhost\github\utilus\src/Algorithm/UUID.php">
         <class name="UUID" namespace="camilord\utilus\Algorithm" fullPackage="camilord" package="camilord">
@@ -592,6 +592,18 @@
       <metrics loc="28" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
     <package name="camilord\utilus\IO">
+      <file name="E:\localhost\github\utilus\src/IO/DirectoryUtil.php">
+        <class name="DirectoryUtil" namespace="camilord\utilus\IO">
+          <metrics complexity="2" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
+        </class>
+        <line num="18" type="method" name="upLevel" visibility="public" complexity="2" crap="2" count="2"/>
+        <line num="20" type="stmt" count="2"/>
+        <line num="21" type="stmt" count="2"/>
+        <line num="22" type="stmt" count="2"/>
+        <line num="23" type="stmt" count="2"/>
+        <line num="24" type="stmt" count="2"/>
+        <metrics loc="25" ncloc="15" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
+      </file>
       <file name="E:\localhost\github\utilus\src/IO/FileElement.php">
         <class name="FileElement" namespace="camilord\utilus\IO" fullPackage="camilord" package="camilord">
           <metrics complexity="14" methods="14" coveredmethods="14" conditionals="0" coveredconditionals="0" statements="21" coveredstatements="21" elements="35" coveredelements="35"/>
@@ -1345,6 +1357,6 @@
         <metrics loc="45" ncloc="22" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="9" coveredelements="9"/>
       </file>
     </package>
-    <metrics files="30" loc="3148" ncloc="1893" classes="28" methods="143" coveredmethods="92" conditionals="0" coveredconditionals="0" statements="1007" coveredstatements="725" elements="1150" coveredelements="817"/>
+    <metrics files="31" loc="3173" ncloc="1908" classes="29" methods="144" coveredmethods="93" conditionals="0" coveredconditionals="0" statements="1012" coveredstatements="730" elements="1156" coveredelements="823"/>
   </project>
 </coverage>

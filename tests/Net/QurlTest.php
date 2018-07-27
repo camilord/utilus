@@ -10,6 +10,8 @@
  * ----------------------------------------------------
  */
 
+namespace camilord\utilus\Net;
+
 use PHPUnit\Framework\TestCase;
 use camilord\utilus\Net\Qurl;
 

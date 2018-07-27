@@ -10,6 +10,8 @@
  * ----------------------------------------------------
  */
 
+namespace camilord\utilus\Data;
+
 use PHPUnit\Framework\TestCase;
 use camilord\utilus\Data\PaginationUtil;
 use AlphaOne\Util\UUID;

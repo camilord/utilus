@@ -10,6 +10,8 @@
  * ----------------------------------------------------
  */
 
+namespace camilord\utilus\Numeric;
+
 use PHPUnit\Framework\TestCase;
 use camilord\utilus\Numeric\VersionUtilus;
 

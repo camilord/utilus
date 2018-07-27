@@ -10,6 +10,8 @@
  * ----------------------------------------------------
  */
 
+namespace camilord\utilus\Algorithm;
+
 use PHPUnit\Framework\TestCase;
 use camilord\utilus\Algorithm\UUID;
 
