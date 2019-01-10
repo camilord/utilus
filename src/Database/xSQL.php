@@ -28,6 +28,11 @@ class xSQL {
     protected $_statement;
 
     /**
+     * @var bool|mixed
+     */
+    private $is_success;
+
+    /**
      * xSQL constructor.
      * @param null $params
      */
@@ -69,7 +74,22 @@ class xSQL {
     public function query($statement, $params) {
         //return $this->_statement = $this->_db->query($statement, $params);
         $this->_statement = $this->_db->prepare($statement);
-        return $this->_statement->execute($params);
+        $this->is_success = $this->_statement->execute($params);
+        return $this->is_success;
+    }
+
+    /**
+     * @return bool|mixed
+     */
+    public function success() {
+        return $this->is_success;
+    }
+
+    /**
+     * @return array
+     */
+    public function error_message() {
+        return $this->_db->errorInfo();
     }
 
     /**
