@@ -93,8 +93,15 @@ class xSQL {
     }
 
     /**
+     * @return int
+     */
+    public function affected_rows() {
+        return $this->num_rows();
+    }
+
+    /**
      * get number of rows from the query
-     * @return mixed
+     * @return int
      */
     public function num_rows() {
         return $this->_statement->rowCount();
