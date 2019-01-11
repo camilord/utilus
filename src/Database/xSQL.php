@@ -108,6 +108,13 @@ class xSQL {
     }
 
     /**
+     * @return bool
+     */
+    public function exists() {
+        return ($this->num_rows() > 0);
+    }
+
+    /**
      * fetch mixed associative array and numeric array
      * @return mixed
      */
