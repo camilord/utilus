@@ -12,12 +12,13 @@
 namespace camilord\utilus\Net;
 
 /**
- * Class SSLUtil
+ * Class SSLUtil - will get information on SSL
  * @package camilord\utilus\Net
  */
 class SSLUtil
 {
     /**
+     * reference: https://stackoverflow.com/questions/6863948/how-to-get-expiry-date-from-the-ssl-certificate-file-in-php
      * @param string $url
      * @return array
      */
