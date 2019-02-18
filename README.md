@@ -52,7 +52,7 @@ OUTPUT:
 
 GET DOMAIN SSL EXPIRY DAYS LEFT
 ```$php
-// I need to use leading zeroes so the display is awesome
+// I need to know the number of days left for my domain SSL
 $sslUtil = new SSLUtil();
 $url = 'https://www.abcs.co.nz';
 $days = $sslUtil->getSslDaysLeft($url);
