@@ -50,13 +50,18 @@ OUTPUT:
 
 ``/tmp/junkies/tmp_073240_03927845092742.jpg``
 
-LEADING ZEROES
+GET DOMAIN SSL EXPIRY DAYS LEFT
 ```$php
 // I need to use leading zeroes so the display is awesome
-$val = '1208';
-$new_val = NumericUtilus::leading_zeroes($val, 6);
-echo $new_val;
+$sslUtil = new SSLUtil();
+$url = 'https://www.abcs.co.nz';
+$days = $sslUtil->getSslDaysLeft($url);
+if ($days === false) {
+    echo "Error! Cannot fetch SSL information.";
+} else {
+    echo $days.' days left';
+}
 ```
 OUTPUT: 
 
-``001208``
+``370 days left``
