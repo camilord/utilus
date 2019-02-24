@@ -14,6 +14,10 @@ namespace camilord\utilus\Net;
 
 use camilord\utilus\IO\SystemUtilus;
 
+/**
+ * Class NetUtilus
+ * @package camilord\utilus\Net
+ */
 class NetUtilus
 {
     /**
