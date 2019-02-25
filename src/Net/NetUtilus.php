@@ -53,12 +53,14 @@ class NetUtilus
      */
     public function downloadLargeFile($download_url, $destination_download_path = 'tmp/')
     {
+        ob_start();
         $filename = basename($download_url);
         $filename = Sanitizer::filename_cleaner($filename);
         $path_to_download = $destination_download_path.$filename;
 
         $cmd = "wget -O {$path_to_download} {$download_url}";
         ConsoleUtilus::shell_exec($cmd);
+        ob_end_clean();
 
         return $path_to_download;
     }
