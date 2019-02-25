@@ -12,7 +12,9 @@
 namespace camilord\utilus\Net;
 
 
+use camilord\utilus\IO\ConsoleUtilus;
 use camilord\utilus\IO\SystemUtilus;
+use camilord\utilus\Security\Sanitizer;
 
 /**
  * Class NetUtilus
@@ -22,19 +24,19 @@ class NetUtilus
 {
     /**
      * best way to download large file
-     * @param string $amazon_s3_url
+     * @param string $download_url
      * @param string $destination_download_path
      * @return string
      */
-    public function downloadFile($amazon_s3_url, $destination_download_path = 'tmp/')
+    public function downloadFile($download_url, $destination_download_path = 'tmp/')
     {
         if (!is_dir($destination_download_path)) {
             @mkdir($destination_download_path, 0777, true);
         }
-        $tmp_file = $destination_download_path.basename($amazon_s3_url);
+        $tmp_file = $destination_download_path.basename($download_url);
         $tmp_file = SystemUtilus::cleanPath($tmp_file);
 
-        $ch = curl_init($amazon_s3_url);
+        $ch = curl_init($download_url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $data = curl_exec($ch);
         curl_close($ch);
@@ -42,5 +44,22 @@ class NetUtilus
         file_put_contents($tmp_file, $data);
 
         return $tmp_file;
+    }
+
+    /**
+     * @param $download_url
+     * @param string $destination_download_path
+     * @return string
+     */
+    public function downloadLargeFile($download_url, $destination_download_path = 'tmp/')
+    {
+        $filename = basename($download_url);
+        $filename = Sanitizer::filename_cleaner($filename);
+        $path_to_download = $destination_download_path.$filename;
+
+        $cmd = "wget -O {$path_to_download} {$download_url}";
+        ConsoleUtilus::shell_exec($cmd);
+
+        return $path_to_download;
     }
 }
