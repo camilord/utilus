@@ -89,6 +89,13 @@ class xSQL {
     }
 
     /**
+     * @return bool
+     */
+    public function is_connected() {
+        return (is_object($this->_db) && $this->_db instanceof \PDO);
+    }
+
+    /**
      * @param $statement
      * @param $params
      * @return mixed
