@@ -56,13 +56,6 @@ class xSQL {
      * @param array $params
      */
     private function populate_params(array $params) {
-        $this->host = 'localhost';
-        $this->username = 'root';
-        $this->password = '';
-        $this->database = 'test';
-        $this->charset = 'utf8';
-        $this->driver = 'mysql';
-
         if (is_array($params) && count($params) > 0) {
             foreach ($params as $key => $val) {
                 $this->{$key} = $val;
