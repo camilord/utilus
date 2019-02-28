@@ -32,34 +32,56 @@ class xSQL {
      */
     private $is_success;
 
+    private $host = 'localhost';
+    private $username = 'root';
+    private $password = '';
+    private $database = 'test';
+    private $charset = 'utf8';
+    private $driver = 'mysql';
+
     /**
      * xSQL constructor.
      * @param null $params
+     * @param bool $auto_connect
      */
-    public function __construct($params = null) {
-        if (!is_null($params)) {
+    public function __construct($params = null, $auto_connect = true) {
+        if ($auto_connect === true) {
             $this->connect($params);
+        } else {
+            $this->populate_params($params);
         }
     }
 
     /**
-     * @param $params
+     * @param array $params
      */
-    public function connect($params) {
-        $host = 'localhost';
-        $username = 'root';
-        $password = '';
-        $database = 'test';
-        $charset = 'utf8';
-        $driver = 'mysql';
+    private function populate_params(array $params) {
+        $this->host = 'localhost';
+        $this->username = 'root';
+        $this->password = '';
+        $this->database = 'test';
+        $this->charset = 'utf8';
+        $this->driver = 'mysql';
 
         if (is_array($params) && count($params) > 0) {
             foreach ($params as $key => $val) {
-                ${$key} = $val;
+                $this->{$key} = $val;
             }
         }
+    }
 
-        $this->_db = new \PDO($driver.':host='.$host.';dbname='.$database.';charset='.$charset, $username, $password);
+    /**
+     * @param null|array $params
+     * @param bool $auto_connect
+     */
+    public function connect($params = null)
+    {
+        if (is_null($params)) {
+            $params = [];
+        }
+        $this->populate_params($params);
+
+        $this->_db = new \PDO($this->driver.':host='.$this->host.';dbname='.$this->database.';charset='.$this->charset, $this->username, $this->password);
         if (!$this->_db) {
             echo "\n\n".'Unable to connect to the Database!'."\n\n";
             die();
