@@ -12,6 +12,10 @@
 
 namespace camilord\utilus\IO;
 
+/**
+ * Class SystemUtilus
+ * @package camilord\utilus\IO
+ */
 class SystemUtilus
 {
     /**
@@ -34,7 +38,23 @@ class SystemUtilus
         return $max_size;
     }
 
+    /**
+     * @return bool
+     */
     public static function isWin32() {
         return (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN');
+    }
+
+    /**
+     * @param string $path
+     * @return string
+     */
+    public static function cleanPath($path) {
+        $max = count(explode('/', $path));
+        for ($i = 0; $i < $max; $i++) {
+            $path = str_replace('\\', '/', $path);
+            $path = str_replace('//', '/', $path);
+        }
+        return $path;
     }
 }
