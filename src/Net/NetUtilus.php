@@ -53,6 +53,9 @@ class NetUtilus
      */
     public function downloadLargeFile($download_url, $destination_download_path = 'tmp/')
     {
+        if (!is_dir($destination_download_path)) {
+            @mkdir($destination_download_path, 0777, true);
+        }
         $filename = basename($download_url);
         $filename = Sanitizer::filename_cleaner($filename);
         $path_to_download = $destination_download_path.$filename;
