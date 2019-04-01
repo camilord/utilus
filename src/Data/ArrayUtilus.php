@@ -27,6 +27,25 @@ class ArrayUtilus
     }
 
     /**
+     * @param $headers
+     * @param $data
+     * @return array
+     */
+    public static function convertAssociativeArray($headers, $data) {
+        $final_data = [];
+        foreach($headers as $i => $field) {
+            if ($field == '') {
+                continue;
+            }
+            if (strtolower(@$data[$i]) == 'null') {
+                $data[$i] = null;
+            }
+            $final_data[$field] = @$data[$i];
+        }
+        return $final_data;
+    }
+
+    /**
      * @param $data array
      * @return array
      */
