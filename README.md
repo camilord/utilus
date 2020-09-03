@@ -30,8 +30,7 @@ Few example below:
 GENERATING UUID
 ```$php
 // I need UUID
-$uuid = UUID::v4();
-echo $uuid;
+echo UUID::v4();
 ```
 OUTPUT:
  
