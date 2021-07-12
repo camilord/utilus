@@ -52,9 +52,9 @@ class FileUtilusTest extends TestCase
 
     public function getTestData() {
         return [
-            [1, true, '61.7kB'],
-            [4, false, '61.7334'],
-            [2, true, '61.73kB']
+            [1, true, '63.5kB'],
+            [4, false, '63.4980'],
+            [2, true, '63.50kB']
         ];
     }
 }

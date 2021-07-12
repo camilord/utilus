@@ -19,11 +19,17 @@ class DataCrypt56Test extends TestCase
 {
 
     /**
+     * @deprecated
      * @param string $str
      * @param string $encrypted_str
      * @dataProvider getTestData
      */
     public function testEncode($str, $encrypted_str) {
+
+        if (PHP_MAJOR_VERSION >= 7) {
+            $this->markTestSkipped('Test for PHP v5.6 only');
+        }
+
         $cryptor = new DataCrypt56();
         $result_str = $cryptor->encode($str);
 
@@ -31,11 +37,17 @@ class DataCrypt56Test extends TestCase
     }
 
     /**
+     * @deprecated
      * @param string $str
      * @param string $encrypted_str
      * @dataProvider getTestData
      */
     public function testDecode($str, $encrypted_str) {
+
+        if (PHP_MAJOR_VERSION >= 7) {
+            $this->markTestSkipped('Test for PHP v5.6 only');
+        }
+
         $cryptor = new DataCrypt56();
         $result_str = $cryptor->decode($encrypted_str);
 

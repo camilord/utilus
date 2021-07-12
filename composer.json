@@ -1,6 +1,5 @@
 {
   "name": "camilord/utilus",
-  "version": "1.0.18",
   "homepage": "https://github.com/camilord/utilus",
   "description": "Camilo3rd's PHP Utils Library",
   "type": "library",
@@ -14,7 +13,8 @@
     }
   ],
   "require": {
-    "php": ">=5.5"
+    "php": ">=5.5",
+    "ext-json": "*"
   },
   "autoload": {
     "psr-4": {

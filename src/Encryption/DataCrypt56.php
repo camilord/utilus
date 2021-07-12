@@ -13,6 +13,7 @@
 namespace camilord\utilus\Encryption;
 
 /**
+ * @deprecated - do not use this class please...
  * Class DataCrypt56
  * @package camilord\utilus\Encryption
  */
