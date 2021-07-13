@@ -44,6 +44,13 @@ class CsrfToken
         if (!$this->expiration) {
             $this->expiration = 1500;
         }
+
+        /**
+         * @reference: https://www.php.net/manual/en/function.session-status.php
+         */
+        if (php_sapi_name() !== 'cli' && session_status() !== 2) {
+            session_start();
+        }
     }
 
     /**
@@ -69,7 +76,10 @@ class CsrfToken
      */
     public function is_csrf_valid(string $identify, string $submitted_token): bool
     {
-        $server_token = json_decode($this->getEncoder()->decode($_SESSION[self::PREFIX.$identify]), true);
+        $server_token = [];
+        if (isset($_SESSION[self::PREFIX.$identify])) {
+            $server_token = json_decode($this->getEncoder()->decode($_SESSION[self::PREFIX.$identify]), true);
+        }
         $submitted_data = json_decode($this->getEncoder()->decode($submitted_token), true);
         $this->setErrorMessage('Error! Invalid or missing CSRF token.');
 
