@@ -112,6 +112,19 @@ class CsrfToken
     }
 
     /**
+     * destroy all csrf tokens
+     */
+    public function destroy_all() {
+        if (ArrayUtilus::haveData($_SESSION)) {
+            foreach($_SESSION as $key => $val) {
+                if (stripos($key, self::PREFIX) !== false) {
+                    $this->destroy($_SESSION[$key]);
+                }
+            }
+        }
+    }
+
+    /**
      * @return DataCryptInterface
      */
     private function getEncoder()
