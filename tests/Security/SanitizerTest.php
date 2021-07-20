@@ -80,8 +80,9 @@ class SanitizerTest extends TestCase
      */
     public function getTestDataForEmailCleaner() {
         return [
-            ['test_!@#$%^&*()_+}{:"?><', 'test_@_'],
+            ['test_!@#$%^&*()_+}{:"?><', 'test_@_+'],
             ['user@sample.com', 'user@sample.com'],
+            ['sid+bachtiar@sample.com', 'sid+bachtiar@sample.com'],
             ['~root@localhost', 'root@localhost'],
             ['email-user-info@sales.com', 'email-user-info@sales.com']
         ];

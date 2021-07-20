@@ -42,7 +42,7 @@ class Sanitizer
      * @return null|string|string[]
      */
     public static function email_cleaner($text = '') {
-        return preg_replace( '/[^a-zA-Z0-9._\-@]/', '', $text);
+        return preg_replace( '/[^a-zA-Z0-9._\-@+]/', '', $text);
     }
 
     /**
