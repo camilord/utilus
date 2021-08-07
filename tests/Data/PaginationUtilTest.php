@@ -12,9 +12,9 @@
 
 namespace camilord\utilus\Data;
 
+use camilord\utilus\Algorithm\UUID;
 use PHPUnit\Framework\TestCase;
 use camilord\utilus\Data\PaginationUtil;
-use AlphaOne\Util\UUID;
 
 class PaginationUtilTest extends TestCase
 {
