@@ -12,6 +12,8 @@
 
 namespace camilord\utilus\IO;
 
+use camilord\utilus\Data\ArrayUtilus;
+
 /**
  * Class SystemUtilus
  * @package camilord\utilus\IO
@@ -46,6 +48,13 @@ class SystemUtilus
     }
 
     /**
+     * @return string
+     */
+    public static function getPlatformCode() {
+        return strtoupper(substr(PHP_OS, 0, 3));
+    }
+
+    /**
      * @param string $path
      * @return string
      */
@@ -56,5 +65,41 @@ class SystemUtilus
             $path = str_replace('//', '/', $path);
         }
         return $path;
+    }
+
+    /**
+     * @param string $cmd
+     * @return bool
+     */
+    public static function command_exists($cmd) {
+        $return = shell_exec(sprintf("which %s", escapeshellarg($cmd)));
+        return !empty($return);
+    }
+
+    /**
+     * @return array - mac address could be multiple interfaces, so its array
+     */
+    public static function getHostMacAddress()
+    {
+        ob_start();
+        if (self::isWin32()) {
+            system('ipconfig /all');
+        } else {
+            system('ifconfig');
+        }
+        $ip_config_data = ob_get_contents();
+        ob_clean();
+
+        // preg_match("/([a-fA-F0-9]{2}:){5}[a-fA-F0-9]{2}/", $ip_config_data, $matches);
+        preg_match("/[a-fA-F0-9]{2}:[a-fA-F0-9]{2}:[a-fA-F0-9]{2}:[a-fA-F0-9]{2}:[a-fA-F0-9]{2}:[a-fA-F0-9]{2}/", $ip_config_data, $matches);
+
+        $mac_addresses = [];
+        foreach($matches as $mac_address) {
+            if (filter_var($mac_address, FILTER_VALIDATE_MAC)) {
+                $mac_addresses[] = $mac_address;
+            }
+        }
+
+        return $mac_addresses;
     }
 }
