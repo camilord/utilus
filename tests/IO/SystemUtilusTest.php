@@ -24,10 +24,8 @@ class SystemUtilusTest extends TestCase
     public function testGetMacAddress() {
         $mac_addresses = SystemUtilus::getHostMacAddress();
         $this->assertTrue(is_array($mac_addresses));
-
-        foreach($mac_addresses as $mac_address)
-        {
-            $this->assertTrue(filter_has_var($mac_address, FILTER_VALIDATE_MAC));
+        foreach($mac_addresses as $mac_address) {
+            $this->assertSame($mac_address, filter_var($mac_address, FILTER_VALIDATE_MAC));
         }
     }
 }

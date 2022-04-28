@@ -88,15 +88,30 @@ class SystemUtilus
             system('ifconfig');
         }
         $ip_config_data = ob_get_contents();
-        ob_clean();
+        ob_end_clean();
 
         // preg_match("/([a-fA-F0-9]{2}:){5}[a-fA-F0-9]{2}/", $ip_config_data, $matches);
-        preg_match("/[a-fA-F0-9]{2}:[a-fA-F0-9]{2}:[a-fA-F0-9]{2}:[a-fA-F0-9]{2}:[a-fA-F0-9]{2}:[a-fA-F0-9]{2}/", $ip_config_data, $matches);
+        if (self::isWin32()) {
+            preg_match_all("/[a-fA-F0-9]{2}\\-[a-fA-F0-9]{2}\\-[a-fA-F0-9]{2}\\-[a-fA-F0-9]{2}\\-[a-fA-F0-9]{2}\\-[a-fA-F0-9]{2}/", $ip_config_data, $matches);
+        } else {
+            preg_match_all("/[a-fA-F0-9]{2}:[a-fA-F0-9]{2}:[a-fA-F0-9]{2}:[a-fA-F0-9]{2}:[a-fA-F0-9]{2}:[a-fA-F0-9]{2}/", $ip_config_data, $matches);
+        }
 
         $mac_addresses = [];
-        foreach($matches as $mac_address) {
-            if (filter_var($mac_address, FILTER_VALIDATE_MAC)) {
-                $mac_addresses[] = $mac_address;
+        foreach($matches as $mac_address)
+        {
+            if (ArrayUtilus::haveData($mac_address)) {
+                foreach($mac_address as $item) {
+                    $item = str_replace('-', ':', $item);
+                    if (filter_var($item, FILTER_VALIDATE_MAC) && $item !== '00:00:00:00:00:00') {
+                        $mac_addresses[] = $item;
+                    }
+                }
+            } else {
+                $mac_address = str_replace('-', ':', $mac_address);
+                if (filter_var($mac_address, FILTER_VALIDATE_MAC) && $mac_address !== '00:00:00:00:00:00') {
+                    $mac_addresses[] = $mac_address;
+                }
             }
         }
 
