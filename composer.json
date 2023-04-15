@@ -13,8 +13,10 @@
     }
   ],
   "require": {
-    "php": ">=5.5",
-    "ext-json": "*"
+    "php": ">=7.4",
+    "ext-json": "*",
+    "ext-curl": "*",
+    "ext-ctype": "*"
   },
   "autoload": {
     "psr-4": {

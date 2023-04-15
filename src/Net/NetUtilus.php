@@ -31,7 +31,7 @@ class NetUtilus
     public function downloadFile($download_url, $destination_download_path = 'tmp/')
     {
         if (!is_dir($destination_download_path)) {
-            @mkdir($destination_download_path, 0777, true);
+            mkdir($destination_download_path, 0777, true);
         }
         $tmp_file = $destination_download_path.basename($download_url);
         $tmp_file = SystemUtilus::cleanPath($tmp_file);

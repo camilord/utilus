@@ -24,7 +24,7 @@ class Domainus
      */
     public static function getBaseURL($server_name = null) {
         if (is_null($server_name) || $server_name == '') {
-            $server_name = @$_SERVER['SERVER_NAME'];
+            $server_name = $_SERVER['SERVER_NAME'] ?? false;
         }
         return 'http'.((isset($_SERVER['HTTPS'])) ? 's' : '').'://'.$server_name;
     }
@@ -34,7 +34,7 @@ class Domainus
      */
     public static function isSSL() {
         $secure_connection = false;
-        if(isset($_SERVER['HTTPS']) || @$_SERVER['SERVER_PORT'] == 443) {
+        if(isset($_SERVER['HTTPS']) || $_SERVER['SERVER_PORT'] == 443) {
             $secure_connection = true;
         }
 

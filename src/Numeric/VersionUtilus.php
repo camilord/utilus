@@ -28,8 +28,8 @@ class VersionUtilus
     public static function increment($version) {
         $tmp = explode('.', $version);
 
-        $minor_revision = (int)@$tmp[2];
-        $major_revision = (int)@$tmp[1];
+        $minor_revision = (int)($tmp[2] ?? '');
+        $major_revision = (int)($tmp[1] ?? '');
         $version = (int)$tmp[0];
 
         $minor_revision++;

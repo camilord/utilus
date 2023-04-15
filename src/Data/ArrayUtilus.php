@@ -37,10 +37,10 @@ class ArrayUtilus
             if ($field == '') {
                 continue;
             }
-            if (strtolower(@$data[$i]) == 'null') {
+            if (strtolower($data[$i] ?? 'null') === 'null') {
                 $data[$i] = null;
             }
-            $final_data[$field] = @$data[$i];
+            $final_data[$field] = $data[$i] ?? null;
         }
         return $final_data;
     }

@@ -37,7 +37,7 @@ class URIUtilus
      */
     public function getURI($index)
     {
-        return @$this->segments[$index];
+        return $this->segments[$index] ?? null;
     }
 
     /**

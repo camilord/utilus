@@ -48,8 +48,8 @@ class PdfFillable2Flatten
         $cmd2 = str_replace([ '{SOURCE_FILE}', '{OUTPUT_FILE}', '{FINAL_OUTPUT_FILE}' ], [$source_file, $output_file, $final_output_file], $cmd2);
 
         ob_start();
-        @system($cmd1);
-        @system($cmd2);
+        system($cmd1);
+        system($cmd2);
         $cli = ob_get_contents();
         ob_end_clean();
 

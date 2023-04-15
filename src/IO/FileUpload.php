@@ -31,7 +31,7 @@ class FileUpload
     /**
      * @var string - where you upload temporarily
      */
-    private $tmp_dir_location = './tmp';
+    private $tmp_dir_location = '/tmp/';
 
     /**
      * FileUpload constructor.
@@ -64,7 +64,7 @@ class FileUpload
     {
         if ($this->auto_create_tmp_folder === true && !is_dir($this->tmp_dir_location))
         {
-            @mkdir($this->tmp_dir_location, 0775, true);
+            mkdir($this->tmp_dir_location, 0775, true);
         }
     }
 
@@ -80,7 +80,7 @@ class FileUpload
 
             $file_ext = FileUtilus::get_extension($this->files[$file_element]['name']);
             $new_filename = str_replace('{FILE_EXT}', strtolower($file_ext), $new_filename);
-            @move_uploaded_file($this->files[$file_element]['tmp_name'], $new_filename);
+            move_uploaded_file($this->files[$file_element]['tmp_name'], $new_filename);
 
             if (file_exists($new_filename))
             {
