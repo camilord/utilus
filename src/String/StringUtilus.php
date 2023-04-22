@@ -26,7 +26,7 @@ class StringUtilus
      * @param string $appendix
      * @return string
      */
-    public static function substring($text, $length, $appendix = '...')
+    public static function substring($text, $length, $appendix = '...'): string
     {
         if (strlen($text) > $length)
         {
@@ -43,10 +43,17 @@ class StringUtilus
      * @param int $limit
      * @return string
      */
-    public static function truncate_middle($string, $limit = 50) {
-        if ($limit >= 50 && strlen($string) >= $limit) {
+    public static function truncate_middle(string $string, int $limit = 50): string
+    {
+        if ($limit <= 5) {
+            $limit = 5;
+        }
+
+        if (strlen($string) >= $limit)
+        {
             $total = strlen($string);
-            return substr($string, 0, ($total / 8)) . '...' . substr($string, ($total - ($total / 2)), $total);
+            $half = floor($total / 2);
+            return substr($string, 0, $half) . '...' . substr($string, ($half * -1));
         }
 
         return $string;
@@ -57,7 +64,8 @@ class StringUtilus
      * @param string $path2
      * @return string
      */
-    public static function mergeString($path1, $path2) {
+    public static function mergeString($path1, $path2): string
+    {
         $merged_path = $path1 . substr($path2, strpos($path2, basename($path1)) + strlen(basename($path1)));
         return $merged_path;
     }
@@ -66,8 +74,8 @@ class StringUtilus
      * @param string $notes
      * @return string
      */
-    public static function truncate_long_words($notes) {
-
+    public static function truncate_long_words($notes): string
+    {
         $tmp = explode(" ", $notes);
 
         for ($j = 0; $j < count($tmp); $j++) {
@@ -82,9 +90,10 @@ class StringUtilus
 
     /**
      * @param string $txt
-     * @return mixed
+     * @return string
      */
-    public static function adv_ucwords($txt) {
+    public static function adv_ucwords(string $txt): string
+    {
         $alphabet = 'qwertyuiopasdfghjklzxcvbnm';
         $aArray = array();
         $rArray = array();
@@ -93,5 +102,50 @@ class StringUtilus
             $rArray[] = strtoupper('"'.$alphabet[$i]);
         }
         return ucwords(str_replace($aArray, $rArray, $txt));
+    }
+
+    /**
+     * generate random string with specified length
+     *
+     * @param int $length
+     * @return string
+     * @throws \Exception
+     */
+    public static function generate(int $length = 32): string
+    {
+        $str = "";
+        $refSource = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        $refSource.= "abcdefghijklmnopqrstuvwxyz";
+        $refSource.= "0123456789";
+
+        for ($i = 0; $i < $length; $i++)
+        {
+            $str .= $refSource[random_int(0,strlen($refSource))];
+        }
+
+        return $str;
+    }
+
+    /**
+     * generate random string + special chars with specified length
+     *
+     * @param int $length
+     * @return string
+     * @throws \Exception
+     */
+    public static function specialize(int $length = 32): string
+    {
+        $str = "";
+        $refSource = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        $refSource .= "abcdefghijklmnopqrstuvwxyz";
+        $refSource .= "0123456789";
+        $refSource .= "~!@#$%^&*(){}|:<>?,./;[]";
+
+        for ($i = 0; $i < $length; $i++)
+        {
+            $str .= $refSource[random_int(0,strlen($refSource))];
+        }
+
+        return $str;
     }
 }
