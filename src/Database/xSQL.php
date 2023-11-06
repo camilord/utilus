@@ -49,7 +49,7 @@ class xSQL {
         if ($auto_connect === true) {
             $this->connect($params);
         } else {
-            $this->populate_params($params);
+            $this->populate_params($params ?? []);
         }
     }
 
