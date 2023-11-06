@@ -83,6 +83,21 @@ class xSQL {
     }
 
     /**
+     * @param string $connection
+     * @param string $username
+     * @param string $password
+     * @param bool $auto_connect
+     */
+    public function connect_override($connection, $username, $password)
+    {
+        $this->_db = new \PDO($connection, $username, $password);
+        if (!$this->_db) {
+            echo "\n\n".'Unable to connect to the Database!'."\n\n";
+            die();
+        }
+    }
+
+    /**
      * @return bool
      */
     public function is_connected() {
