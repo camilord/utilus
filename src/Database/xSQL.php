@@ -86,7 +86,6 @@ class xSQL {
      * @param string $connection
      * @param string $username
      * @param string $password
-     * @param bool $auto_connect
      */
     public function connect_override($connection, $username, $password)
     {
