@@ -38,6 +38,7 @@ class xSQL {
     private $database = 'test';
     private $charset = 'utf8';
     private $driver = 'mysql';
+    private $port = 3306;
 
     /**
      * xSQL constructor.
@@ -74,7 +75,7 @@ class xSQL {
         }
         $this->populate_params($params);
 
-        $this->_db = new \PDO($this->driver.':host='.$this->host.';dbname='.$this->database.';charset='.$this->charset, $this->username, $this->password);
+        $this->_db = new \PDO($this->driver.':host='.$this->host.';port='.$this->port.';dbname='.$this->database.';charset='.$this->charset, $this->username, $this->password);
         if (!$this->_db) {
             echo "\n\n".'Unable to connect to the Database!'."\n\n";
             die();
