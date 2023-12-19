@@ -148,4 +148,23 @@ class StringUtilus
 
         return $str;
     }
+
+    /**
+     * generate random string + special chars with specified length
+     *
+     * @param int $length
+     * @return string
+     * @throws \Exception
+     */
+    function generateRandomString(int $length = 12): string 
+    {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[random_int(0, $charactersLength - 1)];
+        }
+        
+        return $randomString;
+    }
 }
