@@ -120,7 +120,7 @@ class StringUtilus
 
         for ($i = 0; $i < $length; $i++)
         {
-            $str .= $refSource[random_int(0,strlen($refSource))];
+            $str .= $refSource[random_int(0, (strlen($refSource) - 1))];
         }
 
         return $str;
@@ -143,7 +143,7 @@ class StringUtilus
 
         for ($i = 0; $i < $length; $i++)
         {
-            $str .= $refSource[random_int(0,strlen($refSource))];
+            $str .= $refSource[random_int(0, (strlen($refSource) - 1))];
         }
 
         return $str;
