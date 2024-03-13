@@ -158,4 +158,23 @@ class ArrayUtilus
 
         return $string;
     }
+
+    public static function flatten_array($data, $prefix = null) 
+    {
+        foreach($data as $key => $item) 
+        {
+            if (is_array($item)) {
+                $sub_data = self::flatten_array(
+                    $item, ($prefix ? $prefix.'_' : '').$key
+                );
+                $data = array_merge($data, $sub_data);
+                unset($data[$key]);
+            } else if ($prefix) {
+                $data[$prefix.'_'.$key] = $item;
+                unset($data[$key]);
+            }
+        }
+
+        return $data;
+    }
 }
