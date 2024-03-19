@@ -161,17 +161,24 @@ class ArrayUtilus
 
     public static function flatten_array($data, $prefix = null) 
     {
+        $new_data = [];
         foreach($data as $key => $item) 
         {
-            if (is_array($item)) {
+            if (ArrayUtilus::haveData($item)) {
                 $sub_data = self::flatten_array(
                     $item, (is_null($prefix) ? '' : $prefix.'_').$key
                 );
-                $data = array_merge($data, $sub_data);
+                $new_data[] = $sub_data;
                 unset($data[$key]);
             } else if ($prefix) {
                 $data[$prefix.'_'.$key] = $item;
                 unset($data[$key]);
+            }
+        }
+
+        if (ArrayUtilus::haveData($new_data)) {
+            foreach($new_data as $item) {
+                $data = array_merge($data, $item);
             }
         }
 
