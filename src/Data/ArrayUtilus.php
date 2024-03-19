@@ -165,7 +165,7 @@ class ArrayUtilus
         {
             if (is_array($item)) {
                 $sub_data = self::flatten_array(
-                    $item, ($prefix ? $prefix.'_' : '').$key
+                    $item, (is_null($prefix) ? '' : $prefix.'_').$key
                 );
                 $data = array_merge($data, $sub_data);
                 unset($data[$key]);
