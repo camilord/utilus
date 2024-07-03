@@ -37,6 +37,10 @@ class ValueValidator
      */
     static function is_date_valid($date_value, $date_format = 'Y-m-d')
     {
+        if (stripos($date_value, '/') !== false) {
+            $date_value = str_replace('/', '-', $date_value);
+        }
+        
         $epoch_time = strtotime($date_value);
         if (date($date_format, $epoch_time) == $date_value) {
             return true;
