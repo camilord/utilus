@@ -48,4 +48,15 @@ class ValueValidator
         }
         return false;
     }
+
+    /**
+     * Validate cron schedule string, sample: 30 * * * 1-5
+     * @param string $str
+     * @return bool
+     */
+    static function is_cron_schedule_valid(string $str): bool 
+    {
+        $regex = "/^((?:[1-9]?\d|\*)\s*(?:(?:[\/-][1-9]?\d)|(?:,[1-9]?\d)+)?\s*){5}$/";
+        return (preg_match($regex, $str) > 0);
+    }
 }
