@@ -63,4 +63,34 @@ class ValueValidatorTest extends TestCase
             [ '2018-06-16 00:00:00', 'Y-m-d', false ]
         ];
     }
+
+    /**
+     * @param mixed $schedule
+     * @return void
+     * @dataProvider getCronSchedulerValidityScenarios
+     */
+    public function testCronSchedulerValidity(string $schedule, bool $expected) 
+    {
+        $actual = ValueValidator::is_cron_schedule_valid($schedule);
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function getCronSchedulerValidityScenarios() {
+        return [
+            [ 'schedule' => '* * * * *', 'expected' => true ],
+            [ 'schedule' => '0 * * * *', 'expected' => true ],
+            [ 'schedule' => '*/5 * * * *', 'expected' => true ],
+            [ 'schedule' => '*/15 * * * 1-5', 'expected' => true ],
+            [ 'schedule' => '* 1 * * *', 'expected' => true ],
+            [ 'schedule' => '* */2 * * *', 'expected' => true ],
+            [ 'schedule' => '* 14-23 * * *', 'expected' => true ],
+            [ 'schedule' => '* * 5 * *', 'expected' => true ],
+            [ 'schedule' => '0 * * * 1-5', 'expected' => true ],
+            [ 'schedule' => '* * * 20-25 *', 'expected' => true ],
+            [ 'schedule' => '* * * * 5,6', 'expected' => true ],
+            [ 'schedule' => '* 1-6 * * 5,6', 'expected' => true ],
+            [ 'schedule' => '* 1-66,12, * * 5,6', 'expected' => false ],
+            [ 'schedule' => '* * * * -5,6', 'expected' => false ],
+        ];
+    }
 }
