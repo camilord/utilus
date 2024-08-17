@@ -35,7 +35,7 @@ class FileUpload
 
     /**
      * FileUpload constructor.
-     * @param null $files - $_FILES
+     * @param null|array $files - $_FILES
      * @param bool $auto_create_tmp_folder
      */
     public function __construct($files = null, $auto_create_tmp_folder = false)
@@ -47,7 +47,7 @@ class FileUpload
     }
 
     /**
-     * @param $dir string path
+     * @param string $dir path
      * @param bool $auto_create_tmp_folder
      */
     public function setTemporaryUploadDir($dir, $auto_create_tmp_folder = false)
@@ -69,7 +69,7 @@ class FileUpload
     }
 
     /**
-     * @param $file_element -> $_FILES variable
+     * @param string $file_element -> $_FILES index variable or key value of the array
      * @return bool|FileElement
      */
     public function processUpload($file_element)
