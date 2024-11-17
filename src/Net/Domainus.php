@@ -26,7 +26,7 @@ class Domainus
         if (is_null($server_name) || $server_name == '') {
             $server_name = $_SERVER['SERVER_NAME'] ?? false;
         }
-        return 'http'.((isset($_SERVER['HTTPS']) && strlen($_SERVER['HTTPS']) > 0) ? 's' : '').'://'.$server_name;
+        return 'http'.(self::isSSL() ? 's' : '').'://'.$server_name;
     }
 
     /**
@@ -34,7 +34,7 @@ class Domainus
      */
     public static function isSSL() {
         $secure_connection = false;
-        if(isset($_SERVER['HTTPS']) || $_SERVER['SERVER_PORT'] == 443) {
+        if ((isset($_SERVER['HTTPS']) && strlen($_SERVER['HTTPS']) > 0) || $_SERVER['SERVER_PORT'] == 443) {
             $secure_connection = true;
         }
 
