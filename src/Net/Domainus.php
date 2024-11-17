@@ -26,7 +26,7 @@ class Domainus
         if (is_null($server_name) || $server_name == '') {
             $server_name = $_SERVER['SERVER_NAME'] ?? false;
         }
-        return 'http'.((isset($_SERVER['HTTPS'])) ? 's' : '').'://'.$server_name;
+        return 'http'.((isset($_SERVER['HTTPS']) && strlen($_SERVER['HTTPS']) > 0) ? 's' : '').'://'.$server_name;
     }
 
     /**
