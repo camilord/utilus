@@ -72,7 +72,7 @@ class FileUpload
      * @param string $file_element -> $_FILES index variable or key value of the array
      * @return bool|FileElement
      */
-    public function processUpload($file_element): bool|FileElement
+    public function processUpload($file_element)
     {
         if (isset($this->files[$file_element]) && is_array($this->files[$file_element]) && count($this->files[$file_element]) > 0)
         {
