@@ -93,7 +93,7 @@ class FileUpload
 
     /**
      * @param string $name -> $_FILES index variable or key value of the array
-     * @return bool|FileElement
+     * @return bool|FileElement[]|array
      */
     public function processMultiUpload(string $name): array
     {
@@ -137,8 +137,7 @@ class FileUpload
         string $input_file_name, 
         string $input_file_tmp, 
         string $input_file_type
-    ): bool|FileElement 
-    {
+    ) {
         $new_filename = $this->tmp_dir_location.'/tmp_'.sha1(time().rand(1,99999)).'_'.time().'.{FILE_EXT}';
         $new_filename = SystemUtilus::cleanPath($new_filename);
 
