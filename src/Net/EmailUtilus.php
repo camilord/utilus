@@ -77,9 +77,9 @@ class EmailUtilus
                 $tmp = explode(": ", $item);
                 $append = false;
 
-                $orig_key = @$tmp[0];
+                $orig_key = $tmp[0] ?? null;
                 $key = Sanitizer::text_cleaner($orig_key, false);
-                $value = trim(@$tmp[1]);
+                $value = trim($tmp[1] ?? '');
 
                 if (
                     isset($prev_key) && strlen($prev_key) > 0 &&
@@ -105,8 +105,8 @@ class EmailUtilus
          * validate difference variation of auto responder headers
          */
         if (
-            !filter_var(Sanitizer::email_cleaner(@$header_array['return-path']), FILTER_VALIDATE_EMAIL) &&
-            preg_match("/(auto.*reply)/i", @$header_array['subject'])
+            !filter_var(Sanitizer::email_cleaner($header_array['return-path'] ?? ''), FILTER_VALIDATE_EMAIL) &&
+            preg_match("/(auto.*reply)/i", $header_array['subject'] ?? '')
         ) {
             return true;
         } else if (isset($header_array['x-autoreply']) && strtolower($header_array['x-autoreply']) == 'yes') {

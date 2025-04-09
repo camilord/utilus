@@ -48,7 +48,7 @@ class NumericUtilus
          */
         if (preg_match("/\\./", $num)) {
             $tmp = explode('.', $num);
-            $num = $tmp[0].'.'.(int)@$tmp[1];
+            $num = $tmp[0].'.'.(int)($tmp[1] ?? null);
         }
 
         /**

@@ -79,7 +79,7 @@ class FileUtilus
     public static function get_human_filesize($bytes, $decimals = 2, $add_bytes_label = false) {
         $size = array('B','kB','MB','GB','TB','PB','EB','ZB','YB');
         $factor = floor((strlen($bytes) - 1) / 3);
-        return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . (($add_bytes_label) ? @$size[$factor] : '');
+        return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . (($add_bytes_label) ? ($size[$factor] ?? '') : '');
     }
 
 
