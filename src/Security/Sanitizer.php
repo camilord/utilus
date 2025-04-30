@@ -19,14 +19,31 @@ namespace camilord\utilus\Security;
 class Sanitizer
 {
     /**
+     * Summary of stringify
+     * @param mixed $text
+     * @return string
+     */
+    public static function stringify($text) 
+    {
+        if (is_null($text)) {
+            return '';
+        }
+        if (!is_string($text)) {
+            $text = (string)$text;
+        }
+        return $text;
+    }
+
+    /**
      * @param string $value
      * @return mixed|string
      */
-    public static function real_escape_string($value) {
+    public static function real_escape_string($text) {
+        $text = self::stringify($text);
         $search = array("\\",  "\x00", "\n",  "\r",  "'",  '"', "\x1a");
         $replace = array("\\\\","\\0","\\n", "\\r", "\'", '\"', "\\Z");
 
-        return str_replace($search, $replace, $value);
+        return str_replace($search, $replace, $text);
     }
 
     /**
@@ -34,6 +51,7 @@ class Sanitizer
      * @return null|string|string[]
      */
     public static function login_cleaner($text = '') {
+        $text = self::stringify($text);
         return preg_replace( '/[^a-zA-Z0-9._]/', '', $text);
     }
 
@@ -42,6 +60,7 @@ class Sanitizer
      * @return null|string|string[]
      */
     public static function email_cleaner($text = '') {
+        $text = self::stringify($text);
         return preg_replace( '/[^a-zA-Z0-9._\-@+]/', '', $text);
     }
 
@@ -51,6 +70,7 @@ class Sanitizer
      * @return null|string|string[]
      */
     public static function slugger($text = '', $withSpace = false) {
+        $text = self::stringify($text);
         return ($withSpace) ?
             preg_replace( '/[^a-zA-Z0-9._\- ]/', '', $text) :
             preg_replace( '/[^a-zA-Z0-9._\-]/', '', $text);
@@ -62,6 +82,7 @@ class Sanitizer
      * @return null|string|string[]
      */
     public static function numeric_cleaner($text = '', $negativity = false) {
+        $text = self::stringify($text);
         return ($negativity) ?
             preg_replace( '/[^(\-)0-9.]/', '', $text) :
             preg_replace( '/[^0-9.]/', '', $text);
@@ -73,6 +94,7 @@ class Sanitizer
      * @return null|string|string[]
      */
     public static function alpha_cleaner($text = '', $withSpace = false) {
+        $text = self::stringify($text);
         return ($withSpace) ?
             preg_replace('/[^a-zA-Z ]/', '', $text) :
             preg_replace('/[^a-zA-Z]/', '', $text);
@@ -84,6 +106,7 @@ class Sanitizer
      * @return null|string|string[]
      */
     public static function text_cleaner($text = '', $withSpace = true) {
+        $text = self::stringify($text);
         return ($withSpace) ?
             preg_replace( '/[^a-zA-Z0-9._\-: ]/', '', $text) :
             preg_replace( '/[^a-zA-Z0-9._\-:]/', '', $text);
@@ -95,6 +118,7 @@ class Sanitizer
      * @return null|string|string[]
      */
     static public function filename_cleaner($text) {
+        $text = self::stringify($text);
         return preg_replace( '/[^a-zA-Z0-9._\-]/', '', $text);
     }
 
@@ -102,8 +126,9 @@ class Sanitizer
      * @param string $txt
      * @return null|string|string[]
      */
-    public static function whitespaces($txt) {
-        return preg_replace('/\s\s+/', ' ', $txt);
+    public static function whitespaces($text) {
+        $text = self::stringify($text);
+        return preg_replace('/\s\s+/', ' ', $text);
     }
 
     /**
@@ -111,6 +136,7 @@ class Sanitizer
      * @return null|string|string[]
      */
     public static function alphanumeric_cleaner($text) {
+        $text = self::stringify($text);
         return preg_replace( '/[^a-zA-Z0-9]/', '', $text);
     }
 
@@ -119,6 +145,7 @@ class Sanitizer
      * @return null|string|string[]
      */
     public static function stringFilter($text) {
+        $text = self::stringify($text);
         return preg_replace('/[^a-zA-Z0-9._\-:()&%$#*@ ]/', '', $text);
     }
 
@@ -127,6 +154,9 @@ class Sanitizer
      * @return mixed
      */
     public static function floatFilter($float) {
+        if (is_null($float)) { 
+            return 0;
+        }
         return filter_var($float, FILTER_SANITIZE_NUMBER_FLOAT);
     }
     /**
@@ -136,6 +166,7 @@ class Sanitizer
      * @return mixed|string
      */
     public static function text_normalizer($txt, $remove_redundant_spaces = true) {
+        $txt = self::stringify($txt);
         $txt = str_replace("`", "'", $txt);
         $unwanted_array = array(    'Š'=>'S', 'š'=>'s', 'Ž'=>'Z', 'ž'=>'z', 'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E',
             'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I', 'Î'=>'I', 'Ï'=>'I', 'Ñ'=>'N', 'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O', 'Õ'=>'O', 'Ö'=>'O', 'Ø'=>'O', 'Ù'=>'U',
@@ -161,6 +192,8 @@ class Sanitizer
             }
             return $data;
         }
+
+        $data = self::stringify($data);
 
         // Fix &entity\n;
         //$data = str_replace(array('&amp;','&lt;','&gt;'), array('&amp;amp;','&amp;lt;','&amp;gt;'), $data);
