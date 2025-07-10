@@ -97,7 +97,7 @@ class Domainus
         $url2 = rtrim($url2, "/");
 
         // public const HTTP_MOVED_PERMANENTLY = 301;
-        if ($code === 301) 
+        if ($code === Response::HTTP_MOVED_PERMANENTLY) 
         {
             $url1 = str_replace('www.', '', $url1);
             $url2 = str_replace('www.', '', $url2);
