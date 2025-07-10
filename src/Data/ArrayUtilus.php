@@ -184,4 +184,31 @@ class ArrayUtilus
 
         return $data;
     }
+
+    /**
+     * Summary of isMultiDimensionalArray
+     * @param array $data
+     * @return bool
+     */
+    public static function is_multidimensional_array(array $data) 
+    {
+        $rv = array_filter($data, 'is_array'); 
+
+        if (count($rv) > 0) {
+            return true; 
+        }
+
+        return false;
+    }
+
+    /**
+     * Summary of reset_keys
+     * @param array $data
+     * @return array
+     */
+    public static function reset_keys(array $data): array 
+    {
+        $data = array_values(array_filter($data));
+        return $data;
+    }
 }

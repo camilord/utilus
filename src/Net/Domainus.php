@@ -66,4 +66,48 @@ class Domainus
         return $color;
     }
 
+    public static function getIPAddress(): string
+    {
+        $ip = $_SERVER['REMOTE_ADDR'] ?? '';
+
+        if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'] ?? '';
+        }
+
+        return $ip;
+    }
+
+    /**
+     * @param string $url1
+     * @param string $url2
+     * @return bool
+     */
+    public function is_slightly_the_same(string $url1, string $url2, int $code = 0): bool
+    {
+        $url1 = preg_replace("/^http(s?):\/\//i", '', $url1);
+        $url2 = preg_replace("/^http(s?):\/\//i", '', $url2);
+
+        // if (substr($url1, -1) === '/') {
+        //     $url1 = substr($url1, 0, -1);
+        // }
+        // if (substr($url2, -1) === '/') {
+        //     $url2 = substr($url2, 0, -1);
+        // }
+        $url1 = rtrim($url1, "/");
+        $url2 = rtrim($url2, "/");
+
+        // public const HTTP_MOVED_PERMANENTLY = 301;
+        if ($code === 301) 
+        {
+            $url1 = str_replace('www.', '', $url1);
+            $url2 = str_replace('www.', '', $url2);
+        }
+
+        if ($url1 !== $url2) {
+            return false;
+        }
+
+        return true;
+    }
+
 }
