@@ -5,7 +5,7 @@ Camilo3rd's PHP Utils Library
 
 
 # Installing the library
-```
+```json
 {
     "require": {
         "camilord/utilus": "^1.0"
@@ -15,7 +15,7 @@ Camilo3rd's PHP Utils Library
 
 or 
 
-```
+```bash
 composer require camilord/utilus
 ```
 
@@ -28,7 +28,7 @@ all I need to do is add this package and start my work.
 Few example below:
 
 GENERATING UUID
-```$php
+```php
 // I need UUID
 echo UUID::v4();
 ```
@@ -37,7 +37,7 @@ OUTPUT:
 ``b9ef0e9e-3249-31a1-a529-640a129890ac``
 
 UPLOADING FILE
-```$php
+```php
 // I need to process upload file
 $tmp_dir = '/tmp/junkies/';
 $uploader = new FileUpload($_FILES);
@@ -50,7 +50,7 @@ OUTPUT:
 ``/tmp/junkies/tmp_073240_03927845092742.jpg``
 
 GET DOMAIN SSL EXPIRY DAYS LEFT
-```$php
+```php
 // I need to know the number of days left for my domain SSL
 $sslUtil = new SSLUtil();
 $url = 'https://www.abcs.co.nz';
