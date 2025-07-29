@@ -222,7 +222,8 @@ class ArrayUtilus
     /**
      * Summary of aws_sqs_array_chunk
      * @param array $data
-     * @param bool $skip_large_chunks
+     * @param bool $skip_large_chunks - default to false
+     * @param int $overhead - default to 25600 (25Kb)
      * @throws Exception
      * @return array<array>
      * 
