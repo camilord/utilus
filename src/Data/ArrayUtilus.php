@@ -230,10 +230,10 @@ class ArrayUtilus
      *  "aws_code": "InvalidParameterValueException",
      *  "aws_message": "One or more parameters are invalid. Reason: Message must be shorter than 262144 bytes."
      */
-    public static function aws_sqs_array_chunk(array $data, bool $skip_large_chunks = false) 
+    public static function aws_sqs_array_chunk(array $data, bool $skip_large_chunks = false, int $overhead = 25600) 
     {
-        // $limit = 262144 - 25600; // 256Kb minus 25Kb for overhead
-        $limit = 262144; // 256Kb without overhead
+        $limit = 262144 - $overhead; // 256Kb minus 25Kb for overhead
+        // $limit = 262144; // 256Kb without overhead -- without overhead still fails
         // $limit = 204800; // 200Kb
 
         $grouped_data = [];
