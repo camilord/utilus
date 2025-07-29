@@ -73,7 +73,7 @@ Symfony:
 ```php
 $chunks = ArrayUtilus::aws_sqs_array_chunk($data);
 
-foreach ($chunks as $i => $chunk) 
+foreach ($chunks as $chunk) 
 {
     $this->bus->dispatch(new DataUpdateMessage($chunk));
 }
@@ -83,7 +83,7 @@ Laravel:
 ```php
 $chunks = ArrayUtilus::aws_sqs_array_chunk($data);
 
-foreach ($chunks as $i => $chunk) 
+foreach ($chunks as $chunk) 
 {
     DataUpdateMessage::dispatch($chunk)->onConnection('SQS1');
 }
