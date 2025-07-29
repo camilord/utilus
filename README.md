@@ -85,6 +85,6 @@ $chunks = ArrayUtilus::aws_sqs_array_chunk($data);
 
 foreach ($chunks as $chunk) 
 {
-    DataUpdateMessage::dispatch($chunk)->onConnection('SQS1');
+    DataUpdateQueue::dispatch($chunk)->onConnection($sqs_connection);
 }
 ```
