@@ -161,6 +161,11 @@ class ArrayUtilus
         return $string;
     }
 
+    /**
+     * Summary of flatten_array
+     * @param mixed $data
+     * @param mixed $prefix
+     */
     public static function flatten_array($data, $prefix = null) 
     {
         $new_data = [];
@@ -220,6 +225,10 @@ class ArrayUtilus
      * @param bool $skip_large_chunks
      * @throws Exception
      * @return array<array>
+     * 
+     * To Address: 
+     *  "aws_code": "InvalidParameterValueException",
+     *  "aws_message": "One or more parameters are invalid. Reason: Message must be shorter than 262144 bytes."
      */
     public static function aws_sqs_array_chunk(array $data, bool $skip_large_chunks = false) 
     {
