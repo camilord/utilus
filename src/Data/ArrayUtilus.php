@@ -273,7 +273,21 @@ class ArrayUtilus
         // add remaining chunks
         if (ArrayUtilus::haveData($chunks)) 
         {
-            $grouped_data[] = $chunks;
+            $chunks_size = strlen(json_encode($chunks));
+
+            if ($chunks_size > $limit) 
+            {
+                if ($skip_large_chunks) {
+                    error_log("[{$i}] Chunk size ({$this_chunk_size}) exceeds limit of {$limit} bytes. Skipping large chunk.");
+                    // skip large chunks
+                } else {
+                    throw new Exception('Chunk size exceeds limit of '.$limit.' bytes. Multi-dimensional arrays with large data is not supported.');
+                }
+            } 
+            else 
+            {
+                $grouped_data[] = $chunks;
+            }
         }
 
         return $grouped_data;
