@@ -64,3 +64,27 @@ if ($days === false) {
 OUTPUT: 
 
 ``370 days left``
+
+
+AWS SQS CHUNKING DATA
+
+
+Symfony:
+```php
+$chunks = ArrayUtilus::aws_sqs_array_chunk($data);
+
+foreach ($chunks as $i => $chunk) 
+{
+    $this->bus->dispatch(new DataUpdateMessage($chunk));
+}
+```
+
+Laravel:
+```php
+$chunks = ArrayUtilus::aws_sqs_array_chunk($data);
+
+foreach ($chunks as $i => $chunk) 
+{
+    DataUpdateMessage::dispatch($chunk)->onConnection('SQS1');
+}
+```

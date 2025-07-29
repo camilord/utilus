@@ -221,7 +221,7 @@ class ArrayUtilus
      * @throws Exception
      * @return array<array>
      */
-    public function aws_sqs_array_chunk(array $data, bool $skip_large_chunks = false) 
+    public static function aws_sqs_array_chunk(array $data, bool $skip_large_chunks = false) 
     {
         // $limit = 262144 - 25600; // 256Kb minus 25Kb for overhead
         $limit = 262144; // 256Kb without overhead
