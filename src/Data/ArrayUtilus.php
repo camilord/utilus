@@ -12,6 +12,8 @@
 
 namespace camilord\utilus\Data;
 
+use Exception;
+
 /**
  * Class ArrayUtilus
  * @package camilord\utilus\Data
@@ -210,5 +212,60 @@ class ArrayUtilus
     {
         $data = array_values(array_filter($data));
         return $data;
+    }
+
+    /**
+     * Summary of aws_sqs_array_chunk
+     * @param array $data
+     * @param bool $skip_large_chunks
+     * @throws Exception
+     * @return array<array>
+     */
+    public function aws_sqs_array_chunk(array $data, bool $skip_large_chunks = false) 
+    {
+        // $limit = 262144 - 25600; // 256Kb minus 25Kb for overhead
+        $limit = 262144; // 256Kb without overhead
+        // $limit = 204800; // 200Kb
+
+        $grouped_data = [];
+        $chunks = [];
+        
+        foreach($data as $i => $chunk) 
+        {
+            $this_chunk_size = strlen(json_encode($chunk));
+
+            if ($this_chunk_size > $limit) 
+            {
+                if ($skip_large_chunks) {
+                    error_log("[{$i}] Chunk size ({$this_chunk_size}) exceeds limit of {$limit} bytes. Skipping large chunk.");
+                    continue; // skip large chunks
+                } else {
+                    throw new Exception('Chunk size exceeds limit of '.$limit.' bytes. Multi-dimensional arrays with large data is not supported.');
+                }
+            }
+
+            $chunks_size = strlen(json_encode($chunks));
+
+            if (($chunks_size + $this_chunk_size) < $limit) 
+            {
+                $chunks[] = $chunk;
+            } 
+            else 
+            {
+                $grouped_data[] = $chunks;
+
+                // reset to zero chunks
+                $chunks = [];
+                $chunks[] = $chunk;
+            }
+        }
+
+        // add remaining chunks
+        if (ArrayUtilus::haveData($chunks)) 
+        {
+            $grouped_data[] = $chunks;
+        }
+
+        return $grouped_data;
     }
 }
