@@ -278,7 +278,7 @@ class ArrayUtilus
             if ($chunks_size > $limit) 
             {
                 if ($skip_large_chunks) {
-                    error_log("[{$i}] Chunk size ({$this_chunk_size}) exceeds limit of {$limit} bytes. Skipping large chunk.");
+                    error_log("Remainder Chunk size ({$chunks_size}) exceeds limit of {$limit} bytes. Skipping large chunk.");
                     // skip large chunks
                 } else {
                     throw new Exception('Chunk size exceeds limit of '.$limit.' bytes. Multi-dimensional arrays with large data is not supported.');
