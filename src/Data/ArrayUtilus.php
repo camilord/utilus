@@ -223,7 +223,7 @@ class ArrayUtilus
      * Summary of aws_sqs_array_chunk
      * @param array $data
      * @param bool $skip_large_chunks - default to false
-     * @param int $overhead - default to 25600 (25Kb)
+     * @param int $overhead - default to 102400 (100Kb) - based on my test and what I encountered.
      * @throws Exception
      * @return array<array>
      * 
@@ -231,7 +231,7 @@ class ArrayUtilus
      *  "aws_code": "InvalidParameterValueException",
      *  "aws_message": "One or more parameters are invalid. Reason: Message must be shorter than 262144 bytes."
      */
-    public static function aws_sqs_array_chunk(array $data, bool $skip_large_chunks = false, int $overhead = 25600) 
+    public static function aws_sqs_array_chunk(array $data, bool $skip_large_chunks = false, int $overhead = 102400): array
     {
         $limit = 262144 - $overhead; // 256Kb minus 25Kb for overhead
         // $limit = 262144; // 256Kb without overhead -- without overhead still fails
