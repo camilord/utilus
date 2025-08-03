@@ -42,7 +42,7 @@ class xSQL {
 
     /**
      * xSQL constructor.
-     * @param null $params
+     * @param null|array $params
      * @param bool $auto_connect
      */
     public function __construct($params = null, $auto_connect = true) {
