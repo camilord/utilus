@@ -120,7 +120,7 @@ class Sanitizer
     static public function filename_cleaner($text, $allow_extra = false) {
         $text = self::stringify($text);
         if ($allow_extra) {
-            return preg_replace( '/[^a-zA-Z0-9._\-& ]/', '', $text);
+            return preg_replace( '/[^a-zA-Z0-9._\-()& ]/', '', $text);
         }
         return preg_replace( '/[^a-zA-Z0-9._\-]/', '', $text);
     }
